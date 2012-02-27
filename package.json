@@ -1,5 +1,5 @@
 {
-    "name": "hoochhound",
+    "name": "HoochHound",
     "description": "Liquor review aggregator",
     "author": "Dean Gelber <dean@hoochhound.com>",
     "version": "0.0.1",
@@ -13,5 +13,8 @@
         "path": "0.4.x",
         "util": "0.4.x"
     },
-    "engine": "node >= 0.6.0"
+    "engines": {
+        "node": "0.6.x",
+        "npm": "1.1.x"
+    }
 }

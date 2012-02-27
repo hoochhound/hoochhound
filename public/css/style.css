@@ -1,8 +1,8 @@
 /* Import CSS reset */
 @import url("reset.css");
 
-/* Import fonts (from http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Serif:400italic,700italic|Pacifico&v2) */
-@import url("http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Serif:400italic,700italic|Pacifico&v2");
+/* Import fonts (from http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Serif:400italic,700italic|Pacifico) */
+@import url("http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Serif:400italic,700italic|Pacifico");
 
 /* Primary styles */
 html {
