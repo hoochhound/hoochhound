@@ -1,0 +1,13 @@
+{
+    "name": "hoochhound",
+    "description": "Liquor review aggregator",
+    "author": "Dean Gelber <dean@hoochhound.com>",
+    "version": "0.0.1",
+    "dependencies": {
+        "express": "2.5.x",
+        "request": "2.9.x",
+        "underscore": "1.3.x",
+        "mongoose": "2.5.x"
+    },
+    "engine": "node >= 0.6.0"
+}
