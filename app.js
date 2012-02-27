@@ -62,7 +62,7 @@ app.configure(function() {
         format: '\x1b[1m:method\x1b[0m \x1b[33m:url\x1b[0m :response-time ms'
     }));
     app.use(express.methodOverride());
-    express['static'](__dirname + '/public');
+    app.use(express.static(__dirname + '/public'));
 });
 
 /**
@@ -77,10 +77,6 @@ models.defineModels(mongoose, function() {
 /**
  * Routes
  */
-
-app.get('/', function(req, res) {
-    res.render('index');
-});
 
 function loadProduct(req, res, next) {
     Product.findOne({
@@ -134,7 +130,7 @@ function createProduct(newProduct) {
         }
     });
 }
-
+/*
 function parseImportPage(site, url) {
     var jsonResult;
     var product = new Product();
@@ -155,8 +151,6 @@ function parseImportPage(site, url) {
                         },
                         'keywords': (product.tags).split(' ')
                     };
-                    product.stores.push({'name'
-                    })
                     createProduct();
                 });
             }
@@ -167,6 +161,7 @@ function parseImportPage(site, url) {
     }
 
 }
+*/
 
 // Error handling
 
