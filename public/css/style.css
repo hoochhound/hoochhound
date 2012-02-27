@@ -1,0 +1,229 @@
+/* Import CSS reset */
+@import url("reset.css");
+
+/* Import fonts (from http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Serif:400italic,700italic|Pacifico&v2) */
+@import url("http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Serif:400italic,700italic|Pacifico&v2");
+
+/* Primary styles */
+html {
+	height: 100%;
+}
+body {
+	font-family: "Droid Sans", Arial, sans-serif;
+	color: #fff;
+	font-size: 12px;
+	line-height: 18px;
+	height: 100%;
+	display: table;
+	width: 100%;
+	background: #000 no-repeat center center fixed;
+	-webkit-background-size: cover;	-moz-background-size: cover; -o-background-size: cover;	background-size: cover;
+}		
+a, a:visited {
+	color: #fff;
+	font-weight: bold;
+	text-decoration: underline;
+}
+	a:hover {
+		text-decoration: none;
+	}
+
+#wrapper {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+section {
+	width: 480px;
+	margin: 0 auto;
+	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+}
+#social {
+	text-align: right;
+	position: relative;
+	margin-bottom: -11px;
+	height: 32px;
+}
+	#social a {
+		display: inline-block;
+		margin-right: -5px;
+	}
+#main {
+	width: 500px;
+	text-align: center;
+	position: relative;
+	z-index: 10;
+	padding-bottom: 1px;
+	-moz-box-shadow: 0px 0px 10px #000, inset 0px 1px 1px #fff; -webkit-box-shadow: 0px 0px 10px #000, inset 0px 1px 1px #fff; box-shadow: 0px 0px 10px #000, inset 0px 1px 1px #fff;
+}
+	#main div {
+		background: rgba(0,0,0,0.1) url("../img/separator.png") bottom repeat-x;
+		padding: 15px 0;
+	}
+		h1 {
+			font-family: "Droid Serif", Georgia, serif;
+			font-size: 45px;
+			font-style: italic;
+			color: #333;
+			line-height: 70px;
+			text-shadow: 0px 1px 1px #fff;
+		}
+		#main p {
+			font-family: "Droid Serif", Georgia, serif;
+			font-size: 13px;
+			font-style: italic;
+			color: #333;
+			line-height: 30px;
+			text-shadow: 0px 1px 1px #fff;
+		}
+	form {
+		display: inline-block;
+		width: 480px;
+		height: 40px;
+		margin: 10px 0 5px 0;
+		background: rgba(0,0,0,0.2);
+		-moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.65); -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.65); box-shadow: inset 0px 1px 1px rgba(0,0,0,0.65);
+		-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+	}
+		.no-rgba form {
+			background: #999;
+		}			
+		input {
+			font-family: "Droid Sans", Arial, sans-serif;
+			height: 32px;
+			margin: 4px;
+			padding: 0 10px;
+			border: none;
+			background: none;
+			width: 344px;
+			float: left;
+			color: #333;
+			font-weight: bold;
+			text-shadow: 0px 1px 1px rgba(255,255,255,0.65);
+		}
+			.no-rgba input {
+				line-height: 32px;
+			}
+			input[placeholder] {
+				color: #333;
+			}
+			input::-webkit-input-placeholder {
+				color: #333;
+			}
+			.submit {
+				width: 100px;
+				color: #fff;
+				text-shadow: 0px 1px 5px rgba(0,0,0,0.8);
+				background: url("../img/submit.png") repeat-x;
+				-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+				-moz-box-shadow: inset 0px -1px 1px rgba(0,0,0,0.5), inset 0px 1px 1px rgba(255,255,255,0.6); -webkit-box-shadow: inset 0px -1px 1px rgba(0,0,0,0.5), inset 0px 1px 1px rgba(255,255,255,0.6); box-shadow: inset 0px -1px 1px rgba(0,0,0,0.5), inset 0px 1px 1px rgba(255,255,255,0.6);
+				-webkit-transition: background-color 0.2s; -moz-transition: background-color 0.2s; -o-transition: background-color 0.2s; transition: background-color 0.2s;
+			}
+				.submit:hover {
+					background: url("../img/submit_hover.png") repeat-x;
+				}
+	p#subscribe_status {
+		font-family: "Droid Sans", Arial, sans-serif;
+		font-size: 12px;
+		font-style: normal;
+		margin: 0 10px 10px 10px;
+		height: 30px;
+		line-height: 30px;
+		padding: 0 10px;
+		display: none;
+		text-align: left;
+		border: 1px solid rgba(0,0,0,0.15);
+		background: rgba(0,0,0,0.1);
+		-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+	}
+		.no-rgba p#subscribe_status {
+			border: 1px solid #ccc;
+			background: #eee;
+		}			
+		
+#additional {
+	width: 480px;
+	position: relative;
+	z-index: 5;
+	margin-top: -10px;
+	padding: 30px 14px 15px 14px;
+	border: 1px solid rgba(255,255,255,0.07);
+	-moz-box-shadow: 0px 0px 8px #000; -webkit-box-shadow: 0px 0px 8px #000; box-shadow: 0px 0px 8px #000;
+	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+	#additional:before {
+		content: "";
+		display: block;
+		height: 126px;
+		width: 480px;
+		float: left;
+		margin: -30px 0 -126px -15px;
+		background: url("../img/additional_bg.png") top center no-repeat;
+	}
+	.space {
+		height: 30px;
+	}
+	.small_space {
+		height: 20px;
+	}
+	#countdown {
+	}
+		.dash {
+			display: inline-block;
+			margin-left: 11px;
+			width: 102px;
+			height: 75px;
+			background: url("../img/countdown.png");
+			text-align: center;
+		}
+			.dash:first-child {
+				margin-left: 0;
+			}
+			.digit {
+				display: inline;
+				font-weight: bold;
+				font-size: 50px;
+				color: rgba(255,255,255,0.6);
+				line-height: 66px;
+			}
+			.dash_title {
+				display: inline-block;
+				font-weight: bold;
+				font-size: 11px;
+				width: 77px;
+				height: 20px;
+				background: url("../img/countdown_label.png");
+			}
+	#progressbar {
+		padding: 3px;
+		height: 34px;
+		width: 444px;
+		background: url("../img/progressbar.png");
+	}
+		#progressbar .fill {
+			height: 34px;
+			background: url("../img/progressbar_fill.png") repeat-x;			
+			-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+			-moz-box-shadow: inset 0px 1px 1px rgba(255,255,255,0.1), 0px 1px 1px rgba(0,0,0,0.65); -webkit-box-shadow: inset 0px 1px 1px rgba(255,255,255,0.1), 0px 1px 1px rgba(0,0,0,0.65); box-shadow: inset 0px 1px 1px rgba(255,255,255,0.1), 0px 1px 1px rgba(0,0,0,0.65);
+		}
+	#additional p {
+		text-shadow: 0px 0px 4px #000;
+	}
+	.fancybox {
+		margin-top: 15px;
+	}
+		.fancybox a {
+			margin-right: 11px;
+		}
+			.fancybox a:last-child {
+				margin-right: 0;
+			}
+			.fancybox img {
+				width: 96px;
+				height: 84px;
+				border: 3px solid rgba(0,0,0,0.3);
+				-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+			}
+				.fancybox img:last-child {
+					margin-right: 0;
+				}
