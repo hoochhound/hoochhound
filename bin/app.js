@@ -1,6 +1,4 @@
-/**
- * Module dependencies.
- */
+#!/usr/bin/env node
 
 var express = require('express'),
     connect = require('connect'),
@@ -9,8 +7,8 @@ var express = require('express'),
     mongoose = require('mongoose'),
     util = require('util'),
     path = require('path'),
-    models = require('./models'),
-    db, Product, Settings = {
+    models = require('./models.js'),
+    db, Product, Package, Settings = {
         development: {},
         test: {},
         production: {}
@@ -71,6 +69,7 @@ app.configure(function() {
 
 models.defineModels(mongoose, function() {
     app.Product = Product = mongoose.model('Product');
+    app.Package = Package = mongoose.model('Package');
     db = mongoose.connect(app.set('db-uri'));
 });
 
@@ -120,38 +119,56 @@ app.get('/import/:name', runImport, function(req, res) {
     res.send(req.message);
 });
 
-function createProduct(newProduct) {
-    product.save(function(err) {
-        if (!err) {
-            console.log(product.name + ' ADDED!');
-        }
-        else {
-            console.error(err.message);
-        }
-    });
-}
-/*
 function parseImportPage(site, url) {
     var jsonResult;
-    var product = new Product();
     switch (site) {
     case 'lcbo':
         request(url, function(error, response, body) {
             if (!error && response.statusCode == 200) {
                 jsonResult = JSON.parse(body);
-                _.each(jsonResult.result, function(product) {
-                    product = {
-                        'name': product.name,
-                        'primary_category': product.primary_category,
-                        'second_category': product.secondary_category,
-                        'origin': product.origin,
-                        'producer_name': product.producer_name,
-                        'product_ids': {
-                            'lcbo': product.product_no
-                        },
-                        'keywords': (product.tags).split(' ')
-                    };
-                    createProduct();
+                _.each(jsonResult.result, function(p) {
+                    Product.count({
+                        name: p.name
+                    }, function(err, count) {
+                        if (!err) {
+                            console.log(count);
+                            if (count === 0) {
+                                var product = new Product({
+                                    name: p.name,
+                                    primaryCategory: p.primary_category,
+                                    secondCategory: p.secondary_category,
+                                    origin: p.origin,
+                                    producerName: p.producer_name,
+                                    keywords: (p.tags).split(' ')
+                                });
+                                product.save(function(err) {
+                                    if (!err) {
+                                        console.log(p.name + ' ADDED TO PRODUCTS!');
+                                    }
+                                    else {
+                                        console.error(err.message);
+                                    }
+                                });
+                            }
+                        }
+                    });
+                    var productPackage = new Package({
+                        productName: p.name,
+                        storeName: site,
+                        productId: p.id,
+                        packageUnitType: p.package_unit_type,
+                        packageUnitVolume: p.package_unit_volume_in_milliliters,
+                        packageUnits: p.total_package_units,
+                        productPrice: p.price_in_cents
+                    });
+                    productPackage.save(function(err) {
+                        if (!err) {
+                            console.log(p.name + ' ADDED TO PACKAGES!');
+                        }
+                        else {
+                            console.error(err.message);
+                        }
+                    });
                 });
             }
         });
@@ -161,7 +178,7 @@ function parseImportPage(site, url) {
     }
 
 }
-*/
+
 
 // Error handling
 
