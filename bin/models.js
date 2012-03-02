@@ -1,26 +1,7 @@
-function defineModels(mongoose, fn) {
+function defineModels(mongoose, next) {
     var Schema = mongoose.Schema;
 
-    Product = new Schema({
-        'name': {
-            type: String,
-            index: true
-        },
-        'primaryCategory': String,
-        'secondaryCategory': String,
-        'origin': String,
-        'producer_name': String,
-        'product_ids': {
-            'lcbo': Number
-        },
-        'keywords': [String]
-    });
-
-    Package = new Schema({
-        'productName': {
-            type: String,
-            index: true
-        },
+    var Package = new Schema({
         'storeName': String,
         'productId': Number,
         'packageUnitType': String,
@@ -29,10 +10,22 @@ function defineModels(mongoose, fn) {
         'productPrice': Number
     });
 
-    mongoose.model('Product', Product);
-    mongoose.model('Package', Package);
+    var Product = new Schema({
+        'name': {
+            type: String,
+            index: true
+        },
+        'primaryCategory': String,
+        'secondaryCategory': String,
+        'origin': String,
+        'producer_name': String,
+        'packages': [Package],
+        'keywords': [String]
+    });
 
-    fn();
+    mongoose.model('Product', Product);
+
+    next();
 }
 
 exports.defineModels = defineModels;
