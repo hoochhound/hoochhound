@@ -1,0 +1,18 @@
+{
+  "name": "hoochhound",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "express": "2.5.x",
+    "jade": "0.20.x",
+    "mongoose": "2.5.x",
+    "request": "2.9.x"
+  },
+  "engines": {
+      "node": "0.6.x",
+      "npm": "1.1.x"
+  }
+}
