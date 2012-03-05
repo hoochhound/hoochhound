@@ -75,75 +75,80 @@ app.get('/product/:name', loadProduct, function(req, res) {
     res.send(req.product);
 });
 
-function addProduct(item, next) {
+function addProducts(itemList, i) {
+    i = i || 0;
+    itemList = itemList || [];
+    var item = itemList[i];
+    if (!item) return;
     Product.findOne({
         name: item.name
     }, function(err, doc) {
-        if (doc) {
-            next(null, doc);
-        }
-        else if (!doc) {
-            next(null, new Product({
+        if (!doc) {
+            doc = new Product({
                 name: item.name,
                 primaryCategory: item.primary_category,
                 secondCategory: item.secondary_category,
                 origin: item.origin,
                 producerName: item.producer_name,
                 keywords: item.tags.split(' ')
-            }));
+            });
         }
-        else if (err) {
-            next(err, null);
+        else if (doc) {
+            doc.packages.forEach(function(doc) {
+                if (doc.storeName === 'lcbo') {
+                    doc.remove();
+                }
+            });
+        }
+        else {
+            throw err;
+        }
+        doc.packages.push({
+            storeName: 'lcbo',
+            productId: item.id,
+            productPrice: item.price_in_cents,
+            packageUnitType: item.package_unit_type,
+            packageUnitVolume: item.package_unit_volume_in_milliliters,
+            packageUnits: item.total_package_units
+        });
+        doc.save(function(err) {
+            if (!err) {
+                addProducts(itemList, i + 1);
+            }
+            else {
+                throw err;
+            }
+        });
+    });
+}
+
+function parsePage(url, currentPage) {
+    currentPage = currentPage || 1;
+    request(url + currentPage, function(err, response, body) {
+        if (!err && response.statusCode === 200) {
+            var jsonResult = JSON.parse(body);
+            addProducts(jsonResult.result);
+            if (currentPage === jsonResult.pager.final_page) {
+                return;
+            } else {
+                parsePage(url, currentPage + 1);
+            }
+        } else {
+            throw err;
         }
     });
 }
 
 app.get('/import/:name', function(req, res) {
-    var jsonResult, url, path, currentPage = 1;
+    var jsonResult, url, currentPage = 1;
     switch (req.params.name) {
     case 'lcbo':
-        url = 'http://lcboapi.com';
-        path = '/products?where_not=is_dead&per_page=100&page=';
+        url = 'http://lcboapi.com/products?where_not=is_dead&per_page=100&page=';
         break;
     case 'example':
         break;
     }
-    request(url + path + currentPage, function(error, response, body) {
-        if (!error && response.statusCode === 200) {
-            jsonResult = JSON.parse(body);
-            //while (currentPage <= jsonResult.pager.final_page) {
-            request(url + path + currentPage, function(error, response, body) {
-                if (!error && response.statusCode === 200) {
-                    jsonResult = JSON.parse(body);
-                    jsonResult.result.forEach(function(item) {
-                        addProduct(item, function(err, doc) {
-                            if (err === null) {
-                                doc.packages.push({
-                                    storeName: 'lcbo',
-                                    productId: item.id,
-                                    productPrice: item.price_in_cents,
-                                    packageUnitType: item.package_unit_type,
-                                    packageUnitVolume: item.package_unit_volume_in_milliliters,
-                                    packageUnits: item.total_package_units
-                                });
-                                doc.save(function(err) {
-                                    if (err) {
-                                        throw err;
-                                    }
-                                    console.log('Added: ' + doc.name);
-                                });
-                            }
-                        });
-                    });
-                }
-                else {
-                    console.error(error);
-                }
-            });
-            currentPage += 100;
-            //}
-        }
-    });
+
     res.send('Success!');
 });
 
