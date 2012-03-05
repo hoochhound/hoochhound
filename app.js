@@ -148,7 +148,7 @@ app.get('/import/:name', function(req, res) {
     case 'example':
         break;
     }
-
+    parsePage(url);
     res.send('Success!');
 });
 
