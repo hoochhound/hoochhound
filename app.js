@@ -140,15 +140,13 @@ function parsePage(url, currentPage) {
 }
 
 app.get('/import/:name', function(req, res) {
-    var jsonResult, url, currentPage = 1;
     switch (req.params.name) {
     case 'lcbo':
-        url = 'http://lcboapi.com/products?where_not=is_dead&per_page=100&page=';
+        parsePage('http://lcboapi.com/products?where_not=is_dead&per_page=100&page=');
         break;
     case 'example':
         break;
     }
-    parsePage(url);
     res.send('Success!');
 });
 
