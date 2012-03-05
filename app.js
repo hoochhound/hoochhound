@@ -63,8 +63,7 @@ function loadProduct(req, res, next) {
         if (product) {
             req.product = product;
             next();
-        }
-        else if (err) {
+        } else if (err) {
             next(new Error('Failed to load product ' + req.params.name));
             console.error('Failed to load product ' + req.params.name);
         }
@@ -92,15 +91,13 @@ function addProducts(itemList, i) {
                 producerName: item.producer_name,
                 keywords: item.tags.split(' ')
             });
-        }
-        else if (doc) {
+        } else if (doc) {
             doc.packages.forEach(function(doc) {
                 if (doc.storeName === 'lcbo') {
                     doc.remove();
                 }
             });
-        }
-        else {
+        } else {
             throw err;
         }
         doc.packages.push({
@@ -114,8 +111,7 @@ function addProducts(itemList, i) {
         doc.save(function(err) {
             if (!err) {
                 addProducts(itemList, i + 1);
-            }
-            else {
+            } else {
                 throw err;
             }
         });
