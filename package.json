@@ -15,10 +15,11 @@
     "aggregator"
   ],
   "homepage": "http://hoochhound.com",
+  "scripts": {},
   "contributors": [
     {
       "name": "Dean Gelber",
-      "email": "dnglbr@gmail.com"
+      "email": null
     }
   ],
   "dependencies": {
