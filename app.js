@@ -7,7 +7,8 @@ var express = require('express'),
     http = require('http'),
     request = require('request'),
     models = require('./models'),
-    Product, mongoose = require('mongoose');
+    Product, mongoose = require('mongoose'),
+    knox = require('knox');
 
 //var app = express();
 var app = module.exports = express.createServer();
@@ -28,7 +29,7 @@ app.configure(function() {
 });
 
 app.configure('development', function() {
-    app.set('db-uri', 'mongodb://hooch:hound@staff.mongohq.com:10077/hoochhound_development');
+    app.set('db-uri', 'mongodb://hooch:hound@staff.mongohq.com:10040/hoochhound_development');
     app.use(express.errorHandler());
 });
 
@@ -48,6 +49,12 @@ app.configure('production', function() {
 models.defineModels(mongoose, function() {
     app.Product = Product = mongoose.model('Product');
     mongoose.connect(app.set('db-uri'));
+});
+
+var knoxClient = knox.createClient({
+    key: 'AKIAJNKQSJANKLGE7QXQ',
+    secret: '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',
+    bucket: 'hoochhound.static'
 });
 
 /**
@@ -76,58 +83,77 @@ app.get('/product/:name', loadProduct, function(req, res) {
 
 function addProducts(itemList, i) {
     i = i || 0;
-    itemList = itemList || [];
     var item = itemList[i];
-    if (!item) return;
+    if (!item) {
+        return;
+    }
     Product.findOne({
-        name: item.name
+        "name": item.name
     }, function(err, doc) {
+        if (err) throw err;
         if (!doc) {
             doc = new Product({
-                name: item.name,
-                primaryCategory: item.primary_category,
-                secondCategory: item.secondary_category,
-                origin: item.origin,
-                producerName: item.producer_name,
-                keywords: item.tags.split(' ')
+                "name": item.name,
+                "primaryCategory": item.primary_category,
+                "secondCategory": item.secondary_category,
+                "origin": item.origin,
+                "producerName": item.producer_name,
+                "keywords": item.tags.split(' ')
             });
-        } else if (doc) {
-            doc.packages.forEach(function(doc) {
-                if (doc.storeName === 'lcbo') {
-                    doc.remove();
-                }
-            });
-        } else {
-            throw err;
-        }
-        doc.packages.push({
-            storeName: 'lcbo',
-            productId: item.id,
-            productPrice: item.price_in_cents,
-            packageUnitType: item.package_unit_type,
-            packageUnitVolume: item.package_unit_volume_in_milliliters,
-            packageUnits: item.total_package_units
-        });
-        doc.save(function(err) {
-            if (!err) {
-                addProducts(itemList, i + 1);
-            } else {
-                throw err;
+            if (item.image_url) {
+                request(item.image_url, {
+                    encoding: null
+                }, function(err, res, body) {
+                    if (!err && res.statusCode === 200) {
+                        var req = knoxClient.put('/products/' + doc._id + '.jpg', {
+                            'Content-Type': res.headers['content-type'],
+                            'Content-Length': res.headers['content-length']
+                        });
+                        req.on('response', function(res) {
+                            console.log('Response from S3, status:', res.statusCode, 'url:', req.url);
+                        });
+                        req.on('error', function(err) {
+                            console.error('Error uploading to s3:', err);
+                        });
+                        req.end(body);
+                    }
+                });
             }
+        }
+        Product.findOne({
+            "packages.storeName": "lcbo",
+            "packages.productId": item.id
+        }, function(err, duplicatePackage) {
+            if (err) throw err;
+            if (!duplicatePackage) {
+                doc.packages.push({
+                    "storeName": "lcbo",
+                    "productId": item.id,
+                    "productPrice": item.price_in_cents,
+                    "packageUnitType": item.package_unit_type,
+                    "packageUnitVolume": item.package_unit_volume_in_milliliters,
+                    "packageUnits": item.total_package_units
+                });
+            }
+            doc.save(function(err) {
+                if (err) throw err;
+                addProducts(itemList, i + 1);
+            });
         });
     });
 }
 
 function parsePage(url, currentPage) {
     currentPage = currentPage || 1;
-    request(url + currentPage, function(err, response, body) {
-        if (!err && response.statusCode === 200) {
+    request(url + currentPage, function(err, res, body) {
+        if (!err && res.statusCode === 200) {
             var jsonResult = JSON.parse(body);
             addProducts(jsonResult.result);
             if (currentPage === jsonResult.pager.final_page) {
                 return;
             } else {
-                parsePage(url, currentPage + 1);
+                return;
+                //parsePage(url, currentPage + 1);
             }
         } else {
             throw err;
