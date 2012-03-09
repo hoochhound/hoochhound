@@ -3,12 +3,8 @@
  */
 
 var express = require('express'),
-    routes = require('./routes'),
     http = require('http'),
     request = require('request'),
-    models = require('./models'),
-    Product, mongoose = require('mongoose'),
-    knox = require('knox'),
     cons = require('consolidate');
 
 //var app = express();
@@ -48,15 +44,17 @@ app.configure('production', function() {
 });
 
 /**
- * Mongoose
+ * APIs
  */
+ 
+var mongoose = require('mongoose'), models = require('./models'), Product;
 
 models.defineModels(mongoose, function() {
     app.Product = Product = mongoose.model('Product');
     mongoose.connect(app.set('db-uri'));
 });
 
-var knoxClient = knox.createClient({
+var knoxClient = require('knox').createClient({
     key: 'AKIAJNKQSJANKLGE7QXQ',
     secret: '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',
     bucket: 'hoochhound.static'
@@ -65,27 +63,9 @@ var knoxClient = knox.createClient({
 /**
  * Routes
  */
-
-app.get('/', routes.index);
-
-function loadProduct(req, res, next) {
-    Product.findOne({
-        'name': req.params.name
-    }, function(err, product) {
-        if (product) {
-            req.product = product;
-            next();
-        }
-        else if (err) {
-            next(new Error('Failed to load product ' + req.params.name));
-            console.error('Failed to load product ' + req.params.name);
-        }
-    });
-}
-
-app.get('/product/:name', loadProduct, function(req, res) {
-    res.send(req.product);
-});
+ 
+require('./routes/index')(app);
+require('./routes/product')(app);
 
 function addProducts(itemList, i) {
     i = i || 0;

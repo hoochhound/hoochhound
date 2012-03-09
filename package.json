@@ -19,14 +19,16 @@
   "contributors": [
     {
       "name": "Dean Gelber",
-      "email": null
+      "email": "dnglbr@gmail.com"
     }
   ],
   "dependencies": {
     "express": "2.5.x",
-    "jade": "0.20.x",
     "mongoose": "2.5.x",
-    "request": "2.9.x"
+    "request": "2.9.x",
+    "knox": "0.0.x",
+    "consolidate": "0.1.x",
+    "hogan": "*"
   },
   "devDependencies": {},
   "engines": {
