@@ -8,7 +8,8 @@ var express = require('express'),
     request = require('request'),
     models = require('./models'),
     Product, mongoose = require('mongoose'),
-    knox = require('knox');
+    knox = require('knox'),
+    cons = require('consolidate');
 
 //var app = express();
 var app = module.exports = express.createServer();
@@ -18,8 +19,9 @@ var app = module.exports = express.createServer();
  */
 
 app.configure(function() {
+    app.engine('html', cons.swig);
     app.set('views', __dirname + '/views');
-    app.set('view engine', 'jade');
+    app.set('view engine', 'html');
     app.use(express.favicon());
     app.use(express.logger('dev'));
     app.use(express.static(__dirname + '/public'));
@@ -30,7 +32,10 @@ app.configure(function() {
 
 app.configure('development', function() {
     app.set('db-uri', 'mongodb://hooch:hound@staff.mongohq.com:10040/hoochhound_development');
-    app.use(express.errorHandler());
+    app.use(express.errorHandler({
+        dumpExceptions: true,
+        showStack: true
+    }));
 });
 
 app.configure('test', function() {
@@ -61,7 +66,7 @@ var knoxClient = knox.createClient({
  * Routes
  */
 
-//app.get('/', routes.index);
+app.get('/', routes.index);
 
 function loadProduct(req, res, next) {
     Product.findOne({
@@ -70,7 +75,8 @@ function loadProduct(req, res, next) {
         if (product) {
             req.product = product;
             next();
-        } else if (err) {
+        }
+        else if (err) {
             next(new Error('Failed to load product ' + req.params.name));
             console.error('Failed to load product ' + req.params.name);
         }
@@ -151,11 +157,13 @@ function parsePage(url, currentPage) {
             addProducts(jsonResult.result);
             if (currentPage === jsonResult.pager.final_page) {
                 return;
-            } else {
+            }
+            else {
                 return;
                 //parsePage(url, currentPage + 1);
             }
-        } else {
+        }
+        else {
             throw err;
         }
     });
