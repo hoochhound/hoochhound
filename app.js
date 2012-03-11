@@ -3,9 +3,9 @@
  */
 
 var express = require('express'),
-    http = require('http'),
-    request = require('request'),
-    cons = require('consolidate');
+    hulk = require('hulk-hogan'),
+    // = require('http'),
+    request = require('request');
 
 //var app = express();
 var app = module.exports = express.createServer();
@@ -15,9 +15,12 @@ var app = module.exports = express.createServer();
  */
 
 app.configure(function() {
-    app.engine('html', cons.swig);
     app.set('views', __dirname + '/views');
+    app.set('view options', {
+        layout: false
+    });
     app.set('view engine', 'html');
+    app.register('.html', hulk);
     app.use(express.favicon());
     app.use(express.logger('dev'));
     app.use(express.static(__dirname + '/public'));
@@ -46,8 +49,10 @@ app.configure('production', function() {
 /**
  * APIs
  */
- 
-var mongoose = require('mongoose'), models = require('./models'), Product;
+
+var mongoose = require('mongoose'),
+    models = require('./models'),
+    Product;
 
 models.defineModels(mongoose, function() {
     app.Product = Product = mongoose.model('Product');
@@ -63,7 +68,7 @@ var knoxClient = require('knox').createClient({
 /**
  * Routes
  */
- 
+
 require('./routes/index')(app);
 require('./routes/product')(app);
 
@@ -162,6 +167,6 @@ app.get('/import/:name', function(req, res) {
 
 if (!module.parent) {
     //http.createServer(app).listen(process.env.PORT || 3000);
-    app.listen(process.env.PORT || 3000);
+    app.listen(process.env.PORT || 8000);
     console.log('Express server listening on port %d, environment: %s', app.address().port, app.settings.env);
 }

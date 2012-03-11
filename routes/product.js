@@ -3,26 +3,24 @@
  */
 
 module.exports = function(app) {
-    function loadProduct(req, res, next) {
+    app.param('productName', function(req, res, next, name) {
         app.Product.findOne({
-            'name': req.params.name
+            'name': name
         }, function(err, product) {
-            if (product) {
-                req.product = product;
-                next();
-            }
-            else if (err) {
-                next(new Error('Failed to load product ' + req.params.name));
-            }
-        });
-    }
-
-    app.get('/product/:name', loadProduct, function(req, res) {
-        res.render('product');
+            if (!product) return next(new Error('Failed to find product'));
+            if (err) return next(new Error(err));
+            req.product = product;
+            next();
+        })
     });
-};
 
-
+    app.get('/product/:productName', function(req, res) {
+        res.render('product', {
+            "title": req.product.name,
+            "photo": "http://static.hoochhound.com/products/" + req.product.id + ".jpg"
+        });
+    });
+}
 
 /*exports.product = function(req, res) {
     Product.findOne({

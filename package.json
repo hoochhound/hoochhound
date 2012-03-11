@@ -28,7 +28,7 @@
     "request": "2.9.x",
     "knox": "0.0.x",
     "consolidate": "0.1.x",
-    "hogan": "*"
+    "hogan.js": "1.0.x"
   },
   "devDependencies": {},
   "engines": {
