@@ -14,7 +14,7 @@ var app = module.exports = express.createServer();
  * Config
  */
 
-app.configure(function() {
+app.configure(function () {
     app.set('views', __dirname + '/views');
     app.set('view options', {
         layout: false
@@ -29,7 +29,7 @@ app.configure(function() {
     app.use(app.router);
 });
 
-app.configure('development', function() {
+app.configure('development', function () {
     app.set('db-uri', 'mongodb://hooch:hound@staff.mongohq.com:10040/hoochhound_development');
     app.use(express.errorHandler({
         dumpExceptions: true,
@@ -37,12 +37,12 @@ app.configure('development', function() {
     }));
 });
 
-app.configure('test', function() {
+app.configure('test', function () {
     app.set('db-uri', 'mongodb://hooch:hound@staff.mongohq.com:10075/hoochhound_test');
     app.use(express.errorHandler());
 });
 
-app.configure('production', function() {
+app.configure('production', function () {
     app.set('db-uri', 'mongodb://hooch:hound@staff.mongohq.com:10035/hoochhound_production');
 });
 
@@ -54,7 +54,7 @@ var mongoose = require('mongoose'),
     models = require('./models'),
     Product;
 
-models.defineModels(mongoose, function() {
+models.defineModels(mongoose, function () {
     app.Product = Product = mongoose.model('Product');
     mongoose.connect(app.set('db-uri'));
 });
@@ -80,7 +80,7 @@ function addProducts(itemList, i) {
     }
     Product.findOne({
         "name": item.name
-    }, function(err, doc) {
+    }, function (err, doc) {
         if (err) throw err;
         if (!doc) {
             doc = new Product({
@@ -94,16 +94,16 @@ function addProducts(itemList, i) {
             if (item.image_url) {
                 request(item.image_url, {
                     encoding: null
-                }, function(err, res, body) {
+                }, function (err, res, body) {
                     if (!err && res.statusCode === 200) {
                         var req = knoxClient.put('/products/' + doc._id + '.jpg', {
                             'Content-Type': res.headers['content-type'],
                             'Content-Length': res.headers['content-length']
                         });
-                        req.on('response', function(res) {
+                        req.on('response', function (res) {
                             console.log('Response from S3, status:', res.statusCode, 'url:', req.url);
                         });
-                        req.on('error', function(err) {
+                        req.on('error', function (err) {
                             console.error('Error uploading to s3:', err);
                         });
                         req.end(body);
@@ -114,7 +114,7 @@ function addProducts(itemList, i) {
         Product.findOne({
             "packages.storeName": "lcbo",
             "packages.productId": item.id
-        }, function(err, duplicatePackage) {
+        }, function (err, duplicatePackage) {
             if (err) throw err;
             if (!duplicatePackage) {
                 doc.packages.push({
@@ -126,7 +126,7 @@ function addProducts(itemList, i) {
                     "packageUnits": item.total_package_units
                 });
             }
-            doc.save(function(err) {
+            doc.save(function (err) {
                 if (err) throw err;
                 addProducts(itemList, i + 1);
             });
@@ -136,25 +136,23 @@ function addProducts(itemList, i) {
 
 function parsePage(url, currentPage) {
     currentPage = currentPage || 1;
-    request(url + currentPage, function(err, res, body) {
+    request(url + currentPage, function (err, res, body) {
         if (!err && res.statusCode === 200) {
             var jsonResult = JSON.parse(body);
             addProducts(jsonResult.result);
             if (currentPage === jsonResult.pager.final_page) {
                 return;
-            }
-            else {
+            } else {
                 return;
                 //parsePage(url, currentPage + 1);
             }
-        }
-        else {
+        } else {
             throw err;
         }
     });
 }
 
-app.get('/import/:name', function(req, res) {
+app.get('/import/:name', function (req, res) {
     switch (req.params.name) {
     case 'lcbo':
         parsePage('http://lcboapi.com/products?where_not=is_dead&per_page=100&page=');
