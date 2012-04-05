@@ -11,7 +11,7 @@ module.exports = function(app) {
             if (err) return next(new Error(err));
             req.product = product;
             next();
-        })
+        });
     });
 
     app.get('/product/:productName', function(req, res) {
@@ -20,18 +20,4 @@ module.exports = function(app) {
             "photo": "http://static.hoochhound.com/products/" + req.product.id + ".jpg"
         });
     });
-}
-
-/*exports.product = function(req, res) {
-    Product.findOne({
-        'name': req.params.name
-    }, function(err, product) {
-        if (product) {
-            req.product = product;
-        }
-        else if (err) {
-            next(new Error('Failed to load product ' + req.params.name));
-        }
-    });
-
-};*/
+};
