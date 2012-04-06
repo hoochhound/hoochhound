@@ -74,8 +74,7 @@ module.exports = function (app) {
                 if (currentPage === jsonResult.pager.final_page) {
                     return;
                 } else {
-                    return;
-                    //parsePage(url, currentPage + 1);
+                    parsePage(url, currentPage + 1);
                 }
             } else {
                 throw err;

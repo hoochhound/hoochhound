@@ -257,15 +257,11 @@
           <div class="formRow">
             <label>Product:</label>
             <div class="formRight searchDrop">
-              <select data-placeholder="Choose a Product..." class="chzn-select" style="width:350px;" tabindex="2">
+              <select name="product" data-placeholder="Choose a Product..." class="chzn-select" style="width:350px;" tabindex="2">
                 <option value=""></option>
-                
-                    {{#products}}
-                    
-                <option value="{{id}}">{{name}}</option>
-                
-                    {{/products}}
-                
+                {{#products}}                    
+                <option value="{{id}}">{{name}}</option>                
+                {{/products}}                
               </select>
             </div>
             <div class="clear"></div>
@@ -273,39 +269,39 @@
           <div class="formRow">
             <label>Reviewer:</label>
             <div class="formRight"> <span class="oneThree">
-              <input type="text" value="Name" />
+              <input name="reviewerName" type="text" value="Name" />
               </span> <span class="oneThree">
-              <input type="text" value="Website Name" />
+              <input name="reviewerWebsiteName" type="text" value="Website Name" />
               </span> <span class="oneThree">
-              <input type="text" value="Website URL" />
+              <input name="reviewerWebsiteURL" type="text" value="Website URL" />
               </span> </div>
             <div class="clear"></div>
           </div>
           <div class="formRow">
             <label>Review score:</label>
             <div class="formRight">
-              <input type="text" value="" />
+              <input name="score" type="text" value="" />
             </div>
             <div class="clear"></div>
           </div>
           <div class="formRow">
             <label>Review date:</label>
             <div class="formRight">
-              <input type="text" class="maskDate" value="" />
+              <input name="date" type="text" class="maskDate" value="" />
             </div>
             <div class="clear"></div>
           </div>
           <div class="formRow">
             <label>Link to review:</label>
             <div class="formRight">
-              <input type="text" value="" />
+              <input name="link" type="text" value="" />
             </div>
             <div class="clear"></div>
           </div>
           <div class="formRow">
             <label>Blurb:</label>
             <div class="formRight">
-              <textarea rows="8" cols="" name="textarea"></textarea>
+              <textarea name="blurb" rows="8" cols=""></textarea>
             </div>
             <div class="clear"></div>
           </div>
