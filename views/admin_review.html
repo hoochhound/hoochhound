@@ -257,22 +257,28 @@
           <div class="formRow">
             <label>Product:</label>
             <div class="formRight searchDrop">
-                <select data-placeholder="Choose a Product..." class="chzn-select" style="width:350px;" tabindex="2">
-                    <option value=""></option>
+              <select data-placeholder="Choose a Product..." class="chzn-select" style="width:350px;" tabindex="2">
+                <option value=""></option>
+                
                     {{#products}}
-                    <option value="{{id}}">{{name}}</option>
+                    
+                <option value="{{id}}">{{name}}</option>
+                
                     {{/products}}
-                </select>
+                
+              </select>
             </div>
             <div class="clear"></div>
           </div>
           <div class="formRow">
             <label>Reviewer:</label>
-            <div class="formRight">
-                <span class="oneThree"><input type="text" value="Name" /></span>
-                <span class="oneThree"><input type="text" value="Website Name" /></span>
-                <span class="oneThree"><input type="text" value="Website URL" /></span>
-            </div>
+            <div class="formRight"> <span class="oneThree">
+              <input type="text" value="Name" />
+              </span> <span class="oneThree">
+              <input type="text" value="Website Name" />
+              </span> <span class="oneThree">
+              <input type="text" value="Website URL" />
+              </span> </div>
             <div class="clear"></div>
           </div>
           <div class="formRow">
@@ -310,16 +316,13 @@
             </div>
             <div class="clear"></div>
           </div>
-          <div class="formSubmit"><input type="submit" value="submit" class="redB" /></div>
+          <div class="formSubmit">
+            <input type="submit" value="submit" class="redB" />
+          </div>
           <div class="clear"></div>
         </div>
       </fieldset>
     </form>
-  </div>
-  
-  <!-- Footer line -->
-  <div id="footer">
-    <div class="wrapper">As usually all rights reserved. And as usually brought to you by <a href="http://themeforest.net/user/Kopyov?ref=kopyov" title="">Eugene Kopyov</a></div>
   </div>
 </div>
 <div class="clear"></div>
