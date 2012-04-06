@@ -5,11 +5,10 @@
 var express = require('express'),
     //http = require('http'),
     hulk = require('hulk-hogan');
-    
-app.request = require('request');
 
 //var app = express();
 var app = module.exports = express.createServer();
+app.request = require('request');
 
 /**
  * Config
@@ -73,6 +72,7 @@ app.knoxClient = require('knox').createClient({
 require('./routes/index')(app);
 require('./routes/product')(app);
 require('./routes/import')(app);
+require('./routes/admin')(app);
 
 if (!module.parent) {
     //http.createServer(app).listen(process.env.PORT || 3000);
