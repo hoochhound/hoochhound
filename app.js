@@ -15,6 +15,8 @@ app.request = require('request');
  */
 
 app.configure(function () {
+    app.use(express.cookieParser());
+    app.use(express.session({ secret: "hoochie" }));
     app.set('views', __dirname + '/views');
     app.set('view options', {
         layout: false

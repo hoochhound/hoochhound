@@ -247,8 +247,14 @@
   <!-- Main content wrapper -->
   <div class="wrapper"> 
     
+    {{#flash.success}}
+    <div class="nNote nSuccess hideit">
+        <p><strong>Success:</strong>{{message.success}}</p>
+    </div>
+    {{/flash.success}}
+    
     <!-- Form -->
-    <form action="" class="form">
+    <form action="/admin/review/new" method="post" class="form">
       <fieldset>
         <div class="widget">
           <div class="title"><img src="http://static.hoochhound.com/admin/images/icons/dark/list.png" alt="" class="titleIcon" />

@@ -7,12 +7,19 @@ module.exports = function (app) {
         res.render('admin_index');
     });
 
+    app.post('/admin/review/new', function (req, res) {
+        req.flash('success', 'Review by %s has been added!', req.body.reviewerName);
+        res.redirect('back');
+    });
+
     app.get('/admin/review', function (req, res) {
         app.Product.find({}, ['name', 'id'], function (err, docs) {
             if (err) return new Error(err);
             res.render('admin_review', {
-                products: docs
+                products: docs,
+                flash: req.flash()
             });
         });
     });
+
 };
