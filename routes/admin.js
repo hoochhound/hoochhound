@@ -25,8 +25,8 @@ module.exports = function (app) {
             } else {
                 req.flash('success', 'Review by %s has been added!', req.body.reviewerName);
             }
+            res.redirect('back');
         });
-        res.redirect('back');
     });
 
     app.get('/admin/review', function (req, res) {
