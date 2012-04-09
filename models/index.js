@@ -20,10 +20,23 @@ function defineModels(mongoose, next) {
         'origin': String,
         'producer_name': String,
         'packages': [Package],
-        'keywords': [String]
+        'tags': [String]
+    });
+
+    var Review = new Schema({
+        'product': String,
+        'reviewerName': String,
+        'reviewerWebsiteName': String,
+        'reviewerWebsiteURL': String,
+        'score': Number,
+        'date': Date,
+        'link': String,
+        'blurb': String,
+        'tags': [String]
     });
 
     mongoose.model('Product', Product);
+    mongoose.model('Review', Review);
 
     next();
 }

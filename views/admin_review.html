@@ -249,9 +249,16 @@
     
     {{#flash.success}}
     <div class="nNote nSuccess hideit">
-        <p><strong>Success:</strong>{{flash.success}}</p>
+        <p><strong>SUCCESS:</strong>{{flash.success}}</p>
     </div>
     {{/flash.success}}
+    
+    {{#flash.error}}
+    <div class="nNote nFailure hideit">
+        <p><strong>FAILURE:</strong>{{flash.error}}</p>
+    </div>
+    {{/flash.error}}
+
     
     <!-- Form -->
     <form action="/admin/review/new" method="post" class="form">
@@ -314,7 +321,7 @@
           <div class="formRow">
             <label for="tags">Tags:</label>
             <div class="formRight">
-              <input type="text" id="tags" name="tags" class="tags" value="these,are,sample,tags" />
+              <input type="text" id="tags" name="tags" class="tags" value="" />
             </div>
             <div class="clear"></div>
           </div>

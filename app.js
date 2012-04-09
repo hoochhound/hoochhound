@@ -54,10 +54,11 @@ app.configure('production', function () {
 
 var mongoose = require('mongoose'),
     models = require('./models'),
-    Product;
+    Product, Review;
 
 models.defineModels(mongoose, function () {
     app.Product = Product = mongoose.model('Product');
+    app.Review = Review = mongoose.model('Review');
     mongoose.connect(app.set('db-uri'));
 });
 

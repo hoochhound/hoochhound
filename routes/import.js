@@ -20,7 +20,7 @@ module.exports = function (app) {
                     "secondCategory": item.secondary_category,
                     "origin": item.origin,
                     "producerName": item.producer_name,
-                    "keywords": item.tags.split(' ')
+                    "tags": item.tags.split(' ')
                 });
                 if (item.image_url) {
                     app.request(item.image_url, {
