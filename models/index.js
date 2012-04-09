@@ -15,10 +15,14 @@ function defineModels(mongoose, next) {
             type: String,
             index: true
         },
+        'producer_name': String,
         'primaryCategory': String,
         'secondaryCategory': String,
         'origin': String,
-        'producer_name': String,
+        'alcohol_content': Number,
+        'is_kosher': Boolean,
+        'serving_suggestion': String,
+        'tasting_note': String,
         'packages': [Package],
         'tags': [String]
     });

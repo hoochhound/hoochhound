@@ -15,12 +15,16 @@ module.exports = function (app) {
             if (err) throw err;
             if (!doc) {
                 doc = new app.Product({
-                    "name": item.name,
-                    "primaryCategory": item.primary_category,
-                    "secondCategory": item.secondary_category,
-                    "origin": item.origin,
-                    "producerName": item.producer_name,
-                    "tags": item.tags.split(' ')
+                    'name': item.name,
+                    'producerName': item.producer_name,
+                    'primaryCategory': item.primary_category,
+                    'secondCategory': item.secondary_category,
+                    'origin': item.origin,
+                    'alcohol_content': item.alcohol_content,
+                    'is_kosher': item.is_kosher,
+                    'serving_suggestion': item.serving_suggestion,
+                    'tasting_note': item.tasting_note,
+                    'tags': item.tags.split(' ')
                 });
                 if (item.image_url) {
                     app.request(item.image_url, {
@@ -30,9 +34,6 @@ module.exports = function (app) {
                             var req = app.knoxClient.put('/products/' + doc._id + '.jpg', {
                                 'Content-Type': res.headers['content-type'],
                                 'Content-Length': res.headers['content-length']
-                            });
-                            req.on('response', function (res) {
-                                console.log('Response from S3, status:', res.statusCode, 'url:', req.url);
                             });
                             req.on('error', function (err) {
                                 console.error('Error uploading to s3:', err);
