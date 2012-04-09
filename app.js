@@ -39,8 +39,8 @@ app.configure('development', function () {
     }));
 });
 
-app.configure('test', function () {
-    app.set('db-uri', 'mongodb://hooch:hound@staff.mongohq.com:10075/hoochhound_test');
+app.configure('stage', function () {
+    app.set('db-uri', 'mongodb://hooch:hound@staff.mongohq.com:10075/hoochhound_stage');
     app.use(express.errorHandler());
 });
 
