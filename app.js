@@ -67,7 +67,6 @@ app.knoxClient = require('knox').createClient({
 
 require('./routes/index')(app);
 require('./routes/product')(app);
-require('./routes/import')(app);
 require('./routes/admin')(app);
 
 if (!module.parent) {
