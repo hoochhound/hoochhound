@@ -4,6 +4,9 @@
 
 module.exports = function(app) {
     app.get('/', function(req, res) {
-        res.render('index');
+        app.cons.hogan('views/index.html', {}, function(err, html) {
+            if (err) throw err;
+            res.send(html);
+        });
     });
 };

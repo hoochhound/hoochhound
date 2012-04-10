@@ -15,9 +15,12 @@ module.exports = function(app) {
     });
 
     app.get('/product/:productName', function(req, res) {
-        res.render('product', {
+        app.cons.hogan('views/product.html', {
             "title": req.product.name,
             "photo": "http://static.hoochhound.com/products/" + req.product.id + ".jpg"
+        }, function(err, html) {
+            if (err) throw err;
+            res.send(html);
         });
     });
 };
