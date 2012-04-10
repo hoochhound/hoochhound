@@ -25,8 +25,7 @@ module.exports = function(app) {
         doc.save(function(err) {
             if (err) {
                 req.flash('error', err);
-            }
-            else {
+            } else {
                 req.flash('success', 'Review by %s has been added!', req.body.reviewerName);
             }
             res.redirect('back');
