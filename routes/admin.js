@@ -10,9 +10,7 @@ module.exports = function(app) {
                 if (err) throw err;
                 res.send(html);
             });
-            console.log('hello');
         } else {
-            console.log('hello2');
             next();
         }
     });
