@@ -3,6 +3,38 @@
  */
 
 module.exports = function(app) {
+
+    app.get('/admin/:action?', function(req, res, next) {
+        if (!req.session.user_id) {
+            app.cons.hogan('views/admin_login.html', {}, function(err, html) {
+                if (err) throw err;
+                res.send(html);
+            });
+            console.log('hello');
+        } else {
+            console.log('hello2');
+            next();
+        }
+    });
+
+    app.post('/login', function(req, res) {
+        var post = req.body;
+        if (post.username == 'hooch' && post.password == 'hound') {
+            req.session.user_id = 1;
+            res.redirect('/admin');
+        } else {
+            app.cons.hogan('views/admin_login.html', {}, function(err, html) {
+                if (err) throw err;
+                res.send(html);
+            });
+        }
+    });
+
+    app.get('/logout', function(req, res) {
+        delete req.session.user_id;
+        res.redirect('/admin');
+    });
+
     function addProducts(itemList, i) {
         i = i || 0;
         var item = itemList[i];
