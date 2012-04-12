@@ -3,7 +3,8 @@
  */
 
 var express = require('express'),
-    app = module.exports = express.createServer();
+    app = module.exports = express.createServer(),
+    mongoStore = require('connect-mongodb');
 
 app.request = require('request');
 app.cons = require('consolidate');
@@ -11,18 +12,6 @@ app.cons = require('consolidate');
 /**
  * Config
  */
-
-app.configure(function() {
-    app.use(express.cookieParser());
-    app.use(express.session({
-        secret: "hoochie"
-    }));
-    app.use(express.favicon());
-    app.use(express.logger('dev'));
-    app.use(express.bodyParser());
-    app.use(express.methodOverride());
-    app.use(app.router);
-});
 
 app.configure('development', function() {
     app.set('db-uri', 'mongodb://hooch:hound@staff.mongohq.com:10040/hoochhound_development');
@@ -39,6 +28,19 @@ app.configure('stage', function() {
 
 app.configure('production', function() {
     app.set('db-uri', 'mongodb://hooch:hound@staff.mongohq.com:10035/hoochhound_production');
+});
+
+app.configure(function() {
+    app.use(express.cookieParser());
+    app.use(express.session({
+        store: mongoStore(app.set('db-uri')),
+        secret: 'heC9SwEg'
+    }));
+    app.use(express.favicon());
+    app.use(express.logger('dev'));
+    app.use(express.bodyParser());
+    app.use(express.methodOverride());
+    app.use(app.router);
 });
 
 /**

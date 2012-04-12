@@ -21,7 +21,8 @@
         "request": "2.9.x",
         "knox": "0.0.x",
         "hogan.js": "2.0.x",
-        "consolidate": "0.2.x"
+        "consolidate": "0.2.x",
+        "connect-mongodb": "1.1.x"
     },
     "devDependencies": {},
     "engines": {
