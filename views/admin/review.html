@@ -247,17 +247,17 @@
   <!-- Main content wrapper -->
   <div class="wrapper"> 
     
-    {{#flash.success}}
+    {{#message.success}}
     <div class="nNote nSuccess hideit">
-        <p><strong>SUCCESS:</strong>{{flash.success}}</p>
+        <p><strong>SUCCESS:</strong>{{message.success}}</p>
     </div>
-    {{/flash.success}}
+    {{/message.success}}
     
-    {{#flash.error}}
+    {{#message.error}}
     <div class="nNote nFailure hideit">
-        <p><strong>FAILURE:</strong>{{flash.error}}</p>
+        <p><strong>FAILURE:</strong>{{message.error}}</p>
     </div>
-    {{/flash.error}}
+    {{/message.error}}
 
     
     <!-- Form -->

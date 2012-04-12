@@ -145,9 +145,13 @@ module.exports = function(app) {
         });
         doc.save(function(err) {
             if (err) {
-                req.flash('error', err);
+                req.session.message = {
+                    'error': err.message
+                };
             } else {
-                req.flash('success', 'Review by %s has been added!', req.body.reviewerName);
+                req.session.message = {
+                    'success': 'Review by ' + req.body.reviewerName + ' has been added!'
+                };
             }
             res.redirect('back');
         });
@@ -156,9 +160,10 @@ module.exports = function(app) {
     app.get('/admin/review', function(req, res) {
         app.Product.find({}, ['name', 'id'], function(err, docs) {
             if (err) return new Error(err);
+            console.log(req.session.message);
             app.cons.hogan('views/admin/review.html', {
                 products: docs,
-                flash: req.flash()
+                message: req.session.message
             }, function(err, html) {
                 if (err) throw err;
                 res.send(html);
