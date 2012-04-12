@@ -6,7 +6,7 @@ module.exports = function(app) {
 
     app.get('/admin/:action?', function(req, res, next) {
         if (!req.session.user_id) {
-            app.cons.hogan('views/admin_login.html', {}, function(err, html) {
+            app.cons.hogan('views/admin/login.html', {}, function(err, html) {
                 if (err) throw err;
                 res.send(html);
             });
@@ -21,7 +21,7 @@ module.exports = function(app) {
             req.session.user_id = 1;
             res.redirect('/admin');
         } else {
-            app.cons.hogan('views/admin_login.html', {}, function(err, html) {
+            app.cons.hogan('views/admin/login.html', {}, function(err, html) {
                 if (err) throw err;
                 res.send(html);
             });
@@ -125,7 +125,7 @@ module.exports = function(app) {
     });
 
     app.get('/admin', function(req, res) {
-        app.cons.hogan('views/admin_index.html', {}, function(err, html) {
+        app.cons.hogan('views/admin/index.html', {}, function(err, html) {
             if (err) throw err;
             res.send(html);
         });
@@ -156,7 +156,7 @@ module.exports = function(app) {
     app.get('/admin/review', function(req, res) {
         app.Product.find({}, ['name', 'id'], function(err, docs) {
             if (err) return new Error(err);
-            app.cons.hogan('views/admin_review.html', {
+            app.cons.hogan('views/admin/review.html', {
                 products: docs,
                 flash: req.flash()
             }, function(err, html) {
