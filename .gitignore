@@ -13,3 +13,6 @@ results
 
 node_modules
 npm-debug.log
+
+.settings.xml
+.c9revisions
