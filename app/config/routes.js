@@ -5,7 +5,9 @@ module.exports = function(app) {
             ['get', '/product/:name', 'Product']
         ],
         admin: [
-            ['get', '/', 'Admin']
+            ['get', '/', 'Admin'],
+            ['get', '/review', 'Admin', 'review'],
+            ['post', '/review/new', 'Admin', 'review']
         ]
     }
 }

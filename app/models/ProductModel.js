@@ -33,6 +33,9 @@ module.exports = function(app, config) {
             this.DBModel.findOne({
                 'name': query
             }, callback);
+        },
+        listAll: function(callback) {
+            this.DBModel.find({}, ['name', 'id'], callback);
         }
     })
 }
