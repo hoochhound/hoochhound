@@ -22,7 +22,7 @@ module.exports = function(app, config) {
                 'date': review.date,
                 'link': review.link,
                 'blurb': review.blurb,
-                'tags': review.tags.split(',')
+                'tags': review.tags
             });
             doc.save(callback)
         },

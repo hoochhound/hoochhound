@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <title>404</title>
-  </head>
-  <body>
-    <h1>Page Not Found</h1>
-  </body>
-</html>
+{{> header}}
+{{! latest}}
+
+<div class="main-content-left">
+  <div class="page-content">
+    <div class="section-wrapper">
+      <div class="section"> 404 - Page Not Found </div>
+    </div>
+    <div class="content-panel">
+      <h1 class="error">That just happened.</h1>
+      <p> We could not find the page that you requested. It is possible that it was deleted since the last time you viewed it, or that you typed in the wrong URL. In any case, we want you to find what you are looking for, so we offer you the following options: </p>
+      <p>
+      <div class="home">1. Go back to the <a href="index.php">home page</a> and start your journey over.</div>
+      <div class="menu">2. Use the menu above to locate the section you wish to view.</div>
+      <div class="search">3. Search our site:</div>
+      </p>
+      <div class="searchform"> 
+        
+        <!-- SEARCH -->
+        <form method="get" id="search404" action="search.php">
+          <input type="text" value="search" onFocus="if (this.value == 'search') {this.value = '';}" onBlur="if (this.value == '') {this.value = 'search';}" name="s" id="s">
+        </form>
+      </div>
+      <div class="note"> Enter keyword(s) and press enter </div>
+    </div>
+  </div>
+  {{> article-slider}}
+</div>
+{{> sidebar}}
+{{> footer}}
