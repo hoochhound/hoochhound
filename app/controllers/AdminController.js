@@ -5,7 +5,7 @@ module.exports = function(app, config) {
         },
         review: function(req, res) {
             var controller = this;
-            app.getModel('Product').listAll(function(err, docs) {
+            app.getModel('Product').listByType(req.params.type, function(err, docs) {
                 if (err) return new Error(err);
                 controller.render(res, 'admin/review', {
                     products: docs,

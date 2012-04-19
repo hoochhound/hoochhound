@@ -36,6 +36,11 @@ module.exports = function(app, config) {
         },
         listAll: function(callback) {
             this.DBModel.find({}, ['name', 'id'], callback);
+        },
+        listByType: function(query, callback) {
+            this.DBModel.find({
+                primaryCategory: query
+            }, ['name', 'id'], callback);
         }
     })
 }
