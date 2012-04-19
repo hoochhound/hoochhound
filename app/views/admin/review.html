@@ -1,91 +1,88 @@
 {{> header}}
-<div class="wrapper"> 
-    
-    {{#message.success}}
-    <div class="nNote nSuccess hideit">
-        <p><strong>SUCCESS:</strong>{{message.success}}</p>
-    </div>
-    {{/message.success}}
-    
-    {{#message.error}}
-    <div class="nNote nFailure hideit">
-        <p><strong>FAILURE:</strong>{{message.error}}</p>
-    </div>
-    {{/message.error}}
-
-    
-    <!-- Form -->
-    <form action="/admin/review/new" method="post" class="form">
-      <fieldset>
-        <div class="widget">
-          <div class="title"><img src="http://static.hoochhound.com/admin/images/icons/dark/list.png" alt="" class="titleIcon" />
-            <h6>Add Review</h6>
-          </div>
-          <div class="formRow">
-            <label>Product:</label>
-            <div class="formRight searchDrop">
-              <select name="product" data-placeholder="Choose a Product..." class="chzn-select" style="width:350px;" tabindex="2">
-                <option value=""></option>
-                {{#products}}                    
-                <option value="{{id}}">{{name}}</option>                
-                {{/products}}                
-              </select>
-            </div>
-            <div class="clear"></div>
-          </div>
-          <div class="formRow">
-            <label>Reviewer:</label>
-            <div class="formRight"> <span class="oneThree">
-              <input name="reviewerName" type="text" value="Name" />
-              </span> <span class="oneThree">
-              <input name="reviewerWebsiteName" type="text" value="Website Name" />
-              </span> <span class="oneThree">
-              <input name="reviewerWebsiteURL" type="text" value="Website URL" />
-              </span> </div>
-            <div class="clear"></div>
-          </div>
-          <div class="formRow">
-            <label>Review score:</label>
-            <div class="formRight">
-              <input name="score" type="text" value="" />
-            </div>
-            <div class="clear"></div>
-          </div>
-          <div class="formRow">
-            <label>Review date:</label>
-            <div class="formRight">
-              <input name="date" type="text" class="maskDate" value="" />
-              <span class="formNote">MM/DD/YYYY</span>
-            </div>
-            <div class="clear"></div>
-          </div>
-          <div class="formRow">
-            <label>Link to review:</label>
-            <div class="formRight">
-              <input name="link" type="text" value="" />
-            </div>
-            <div class="clear"></div>
-          </div>
-          <div class="formRow">
-            <label>Blurb:</label>
-            <div class="formRight">
-              <textarea name="blurb" rows="8" cols=""></textarea>
-            </div>
-            <div class="clear"></div>
-          </div>
-          <div class="formRow">
-            <label for="tags">Tags:</label>
-            <div class="formRight">
-              <input type="text" id="tags" name="tags" class="tags" value="" />
-            </div>
-            <div class="clear"></div>
-          </div>
-          <div class="formSubmit">
-            <input type="submit" value="submit" class="redB" />
+<div class="wrapper">
+  {{#message.success}}
+  <div class="nNote nSuccess hideit">
+    <p><strong>SUCCESS:</strong>{{message.success}}</p>
+  </div>
+  {{/message.success}}
+  
+  {{#message.error}}
+  <div class="nNote nFailure hideit">
+    <p><strong>FAILURE:</strong>{{message.error}}</p>
+  </div>
+  {{/message.error}} 
+  
+  <!-- Form -->
+  <form action="/admin/review/new" method="post" class="form">
+    <fieldset>
+      <div class="widget">
+        <div class="title"><img src="http://static.hoochhound.com/admin/images/icons/dark/list.png" alt="" class="titleIcon">
+          <h6>Add Review</h6>
+        </div>
+        <div class="formRow">
+          <label>Product:</label>
+          <div class="formRight searchDrop">
+            <select name="product" data-placeholder="Choose a Product..." class="chzn-select" style="width:350px;" tabindex="2">
+              <option value=""></option>
+                {{#products}}
+              <option value="{{id}}">{{name}}</option>                          
+                {{/products}}
+            </select>
           </div>
           <div class="clear"></div>
         </div>
-      </fieldset>
-    </form>
-  </div>
+        <div class="formRow">
+          <label>Reviewer:</label>
+          <div class="formRight"> <span class="oneThree">
+            <input name="reviewerName" type="text" placeholder="Name">
+            </span> <span class="oneThree">
+            <input name="reviewerWebsiteName" type="text" placeholder="Website Name">
+            </span> <span class="oneThree">
+            <input name="reviewerWebsiteURL" type="text" placeholder="Website URL">
+            </span> </div>
+          <div class="clear"></div>
+        </div>
+        <div class="formRow">
+          <label>Review score:</label>
+          <div class="formRight">
+            <input name="score" type="text" value="">
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="formRow">
+          <label>Review date:</label>
+          <div class="formRight">
+            <input name="date" type="text" class="maskDate" value="">
+            <span class="formNote">MM/DD/YYYY</span> </div>
+          <div class="clear"></div>
+        </div>
+        <div class="formRow">
+          <label>Link to review:</label>
+          <div class="formRight">
+            <input name="link" type="text" value="">
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="formRow">
+          <label>Blurb:</label>
+          <div class="formRight">
+            <textarea name="blurb" rows="8" cols=""></textarea>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="formRow">
+          <label for="tags">Tags:</label>
+          <div class="formRight">
+            <input type="text" id="tags" name="tags" class="tags" value="">
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="formSubmit">
+          <input type="submit" value="submit" class="redB">
+        </div>
+        <div class="clear"></div>
+      </div>
+    </fieldset>
+  </form>
+</div>
 {{> footer}}
