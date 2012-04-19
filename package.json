@@ -1,0 +1,35 @@
+{
+    "name": "hoochhound",
+    "version": "0.0.1",
+    "author": "Dean Gelber",
+    "description": "Liquor & Wine Review Aggregator",
+    "main": "server.js",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/dnglbr/hoochhound.git"
+    },
+    "keywords": ["liquor", "wine", "reviews", "aggregator"],
+    "homepage": "http://hoochhound.com",
+    "scripts": {},
+    "contributors": [{
+        "name": "Dean Gelber",
+        "email": "dnglbr@gmail.com"
+    }],
+    "dependencies": {
+        "matador": "1.0.x",
+        "mongoose": "2.5.x"
+    },
+    "devDependencies": {},
+    "engines": {
+        "node": "0.6.x",
+        "npm": "1.1.x"
+    },
+    "bugs": {
+        "url": "https://github.com/dnglbr/hoochhound/issues"
+    },
+    "licenses": [{
+        "type": "MIT",
+        "url": "https://github.com/dnglbr/hoochhound/raw/master/LICENSE"
+    }],
+    "private": true
+}
