@@ -18,7 +18,6 @@ app.configure(function() {
 
 app.configure('development', function() {
     app.use(matador.logger('dev'));
-    app.set('db-uri', 'mongodb://hooch:hound@staff.mongohq.com:10040/hoochhound_development');
     app.use(matador.errorHandler({
         dumpExceptions: true,
         showStack: true
@@ -27,13 +26,11 @@ app.configure('development', function() {
 
 app.configure('stage', function() {
     app.use(matador.logger('dev'));
-    app.set('db-uri', 'mongodb://hooch:hound@staff.mongohq.com:10075/hoochhound_stage');
     app.use(matador.errorHandler());
 });
 
 app.configure('production', function() {
     app.use(matador.logger());
-    app.set('db-uri', 'mongodb://hooch:hound@staff.mongohq.com:10035/hoochhound_production');
     app.use(matador.errorHandler());
 });
 
