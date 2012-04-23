@@ -41,6 +41,25 @@ module.exports = function(app, config) {
             this.DBModel.find({
                 primaryCategory: query
             }, ['name', 'id'], callback);
+        },
+        paginate: function(q, pageNumber, resultsPerPage, callback) {
+            var MyModel = this.DBModel;
+            var skipFrom = (pageNumber * resultsPerPage) - resultsPerPage;
+            var query = MyModel.find(q).skip(skipFrom).limit(resultsPerPage);
+            query.exec(function(error, results) {
+                if (error) {
+                    callback(error, null, null);
+                } else {
+                    MyModel.count(q, function(error, count) {
+                        if (error) {
+                            callback(error, null, null);
+                        } else {
+                            var pageCount = Math.floor(count / resultsPerPage);
+                            callback(null, pageCount, results);
+                        }
+                    });
+                }
+            });
         }
-    })
+    });
 }

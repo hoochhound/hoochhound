@@ -1,13 +1,23 @@
 module.exports = function(app, config) {
     return app.getModel('Application', true).extend(function() {
         this.DBModel = this.mongoose.model('Review', new this.Schema({
-            'product': String,
+            'product': {
+                type: String,
+                required: true
+            },
             'reviewerName': String,
             'reviewerWebsiteName': String,
             'reviewerWebsiteURL': String,
-            'score': Number,
+            'score': {
+                type: Number,
+                min: 0,
+                max: 100
+            },
             'date': Date,
-            'link': String,
+            'link': {
+                type: String,
+                match: /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+            },
             'blurb': String,
             'tags': [String]
         }));
@@ -28,6 +38,11 @@ module.exports = function(app, config) {
         },
         find: function(id, callback) {
             this.DBModel.findById(id, callback)
+        },
+        countByProductId: function(conditions, callback) {
+            this.DBModel.count({
+                product: conditions
+            }, callback)
         }
     })
 }

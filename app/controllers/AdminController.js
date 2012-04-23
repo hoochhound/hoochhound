@@ -3,6 +3,24 @@ module.exports = function(app, config) {
         index: function(req, res) {
             this.render(res, 'admin/index');
         },
+        productList: function(req, res) {
+            var controller = this;
+            app.getModel('Product').paginate({
+                primaryCategory: req.params.type
+            }, 2, 20, function(err, pageCount, paginatedResults) {
+                if (err) return new Error(err);
+                paginatedResults.forEach(function(result) {
+                    app.getModel('Review').countByProductId(result._id, function(err, count) {
+                        if (err) return new Error(err);
+                        result.reviewCount = count;
+                    });
+                });
+                controller.render(res, 'admin/products', {
+                    count: pageCount,
+                    results: paginatedResults
+                });
+            });
+        },
         review: function(req, res) {
             var controller = this;
             app.getModel('Product').listByType(req.params.type, function(err, docs) {
