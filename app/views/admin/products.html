@@ -1,0 +1,39 @@
+{{> header}}
+<!-- Main content wrapper -->
+<div class="wrapper"> 
+  
+  <!-- Static table -->
+  <div class="widget">
+    <div class="title"><img src="http://static.hoochhound.com/admin/images/icons/dark/frames.png" alt="" class="titleIcon">
+      <h6>Usual static table</h6>
+    </div>
+    <table cellpadding="0" cellspacing="0" width="100%" class="sTable">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Producer</td>
+          <td>Primary Category</td>
+          <td>Secondary Category</td>
+          <td>Reviews</td>
+          <td>Edit</td>
+        </tr>
+      </thead>
+      <tbody>
+      {{#results}}
+        <tr>
+          <td>{{name}}</td>
+          <td>{{producer_name}}</td>
+          <td>{{primaryCategory}}</td>
+          <td>{{secondaryCategory}}</td>
+          <td>{{reviewCount}}</td>
+          <td>Edit</td>
+        </tr>
+        {{/results}}
+      </tbody>
+    </table>
+  </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+{{> footer}}
