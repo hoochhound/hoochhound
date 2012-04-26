@@ -4,22 +4,45 @@ module.exports = function(app, config) {
             this.render(res, 'admin/index');
         },
         productList: function(req, res) {
-            var controller = this;
-            app.getModel('Product').paginate({
-                primaryCategory: req.params.type
-            }, 2, 20, function(err, pageCount, paginatedResults) {
-                if (err) return new Error(err);
-                paginatedResults.forEach(function(result) {
-                    app.getModel('Review').countByProductId(result._id, function(err, count) {
-                        if (err) return new Error(err);
-                        result.reviewCount = count;
+            if (req.params.pageNum === undefined) {
+                res.redirect(req.url + '/1');
+            } else {
+                var currentPage = parseInt(req.params.pageNum, 10) || 1;
+                var controller = this;
+                app.getModel('Product').paginate({
+                    primaryCategory: req.params.type
+                }, currentPage, 20, function(err, pageCount, paginatedResults) {
+                    if (err) return new Error(err);
+                    paginatedResults.forEach(function(result) {
+                        app.getModel('Review').countByProductId(result._id, function(err, count) {
+                            if (err) return new Error(err);
+                            result.reviewCount = count;
+                        });
+                    });
+                    var pagination = [];
+                    pagination.settings = {
+                        nextPage: currentPage + 1,
+                        prevPage: currentPage - 1
+                    }
+                    pagination.pages = [];
+                    for (var i = 1; i <= pageCount; i++) {
+                        if (i == currentPage) {
+                            pagination.pages.push({
+                                pageNum: i,
+                                active: true
+                            });
+                        } else {
+                            pagination.pages.push({
+                                pageNum: i
+                            });
+                        }
+                    }
+                    controller.render(res, 'admin/products', {
+                        pagination: pagination,
+                        paginatedResults: paginatedResults
                     });
                 });
-                controller.render(res, 'admin/products', {
-                    count: pageCount,
-                    results: paginatedResults
-                });
-            });
+            }
         },
         review: function(req, res) {
             var controller = this;

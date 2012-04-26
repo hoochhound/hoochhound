@@ -19,7 +19,7 @@
         </tr>
       </thead>
       <tbody>
-      {{#results}}
+      {{#paginatedResults}}
         <tr>
           <td>{{name}}</td>
           <td>{{producer_name}}</td>
@@ -28,10 +28,21 @@
           <td>{{reviewCount}}</td>
           <td>Edit</td>
         </tr>
-        {{/results}}
+        {{/paginatedResults}}
       </tbody>
     </table>
   </div>
+  {{#pagination.settings}}
+  <div class="pagination">
+    <ul class="pages">
+	    <li class="prev"><a href="{{pagination.settings.prevPage}}">&lt;</a></li>
+        {{#pagination.pages}}
+		<li><a href="{{pageNum}}"{{#active}} class="active"{{/active}}>{{pageNum}}</a></li>
+        {{/pagination.pages}}
+		<li class="next"><a href="{{pagination.settings.nextPage}}">&gt;</a></li>
+	</ul>
+   </div>
+   {{/pagination.settings}}
       <div class="clear"></div>
     </div>
   </div>
