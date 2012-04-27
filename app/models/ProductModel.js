@@ -13,14 +13,14 @@ module.exports = function(app, config) {
                 type: String,
                 index: true
             },
-            'producer_name': String,
+            'producerName': String,
             'primaryCategory': String,
             'secondaryCategory': String,
             'origin': String,
-            'alcohol_content': Number,
-            'is_kosher': Boolean,
-            'serving_suggestion': String,
-            'tasting_note': String,
+            'alcoholContent': Number,
+            'kosher': Boolean,
+            'servingSuggestion': String,
+            'tastingNote': String,
             'packages': [Package],
             'tags': [String]
         }));
@@ -54,8 +54,7 @@ module.exports = function(app, config) {
                         if (error) {
                             callback(error, null, null);
                         } else {
-                            var pageCount = Math.floor(count / resultsPerPage);
-                            callback(null, pageCount, results);
+                            callback(null, Math.floor(count / resultsPerPage), results);
                         }
                     });
                 }

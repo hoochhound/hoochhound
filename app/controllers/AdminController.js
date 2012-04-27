@@ -13,12 +13,6 @@ module.exports = function(app, config) {
                     primaryCategory: req.params.type
                 }, currentPage, 20, function(err, pageCount, paginatedResults) {
                     if (err) return new Error(err);
-                    paginatedResults.forEach(function(result) {
-                        app.getModel('Review').countByProductId(result._id, function(err, count) {
-                            if (err) return new Error(err);
-                            result.reviewCount = count;
-                        });
-                    });
                     var pagination = [];
                     pagination.settings = {
                         nextPage: currentPage + 1,
@@ -37,6 +31,10 @@ module.exports = function(app, config) {
                             });
                         }
                     }
+                    app.getModel('Review').countByProductId(paginatedResults[i]._id, function(err, count) {
+                        if (err) return new Error(err);
+                        paginatedResults[i].reviewCount = count;
+                    });
                     controller.render(res, 'admin/products', {
                         pagination: pagination,
                         paginatedResults: paginatedResults

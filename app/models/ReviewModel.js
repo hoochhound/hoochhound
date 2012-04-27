@@ -39,10 +39,15 @@ module.exports = function(app, config) {
         find: function(id, callback) {
             this.DBModel.findById(id, callback)
         },
-        countByProductId: function(conditions, callback) {
-            this.DBModel.count({
-                product: conditions
-            }, callback)
+        countProductArray: function(array, conditions, callback) {
+            array.forEach(function(doc) {
+                this.DBModel.count({
+                    product: conditions
+                }, function(count) {
+                    doc.reviewCount = count;
+                });)
+            }
+            callback(array);
         }
-    })
+    });
 }
