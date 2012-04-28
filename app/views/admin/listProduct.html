@@ -5,7 +5,7 @@
   <!-- Static table -->
   <div class="widget">
     <div class="title"><img src="http://static.hoochhound.com/admin/images/icons/dark/frames.png" alt="" class="titleIcon">
-      <h6>Usual static table</h6>
+      <h6></h6>
     </div>
     <table cellpadding="0" cellspacing="0" width="100%" class="sTable">
       <thead>
@@ -15,7 +15,7 @@
           <td>Primary Category</td>
           <td>Secondary Category</td>
           <td>Reviews</td>
-          <td>Edit</td>
+          <td></td>
         </tr>
       </thead>
       <tbody>
@@ -26,7 +26,7 @@
           <td>{{primaryCategory}}</td>
           <td>{{secondaryCategory}}</td>
           <td>{{reviewCount}}</td>
-          <td>Edit</td>
+          <td><a href="/admin/product/{{_id}}/add/review" title="" class="button basic"><span>Add Review</span></a></td>
         </tr>
         {{/paginatedResults}}
       </tbody>

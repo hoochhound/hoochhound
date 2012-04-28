@@ -3,7 +3,7 @@ module.exports = function(app, config) {
         index: function(req, res) {
             this.render(res, 'admin/index');
         },
-        productList: function(req, res) {
+        listProduct: function(req, res) {
             if (req.params.pageNum === undefined) {
                 res.redirect(req.url + '/1');
             } else {
@@ -11,7 +11,7 @@ module.exports = function(app, config) {
                 var controller = this;
                 app.getModel('Product').paginate({
                     primaryCategory: req.params.type
-                }, currentPage, 20, function(err, pageCount, paginatedResults) {
+                }, currentPage, 500, function(err, pageCount, paginatedResults) {
                     if (err) return new Error(err);
                     var pagination = [];
                     pagination.settings = {
@@ -31,7 +31,7 @@ module.exports = function(app, config) {
                             });
                         }
                     }
-                    controller.render(res, 'admin/products', {
+                    controller.render(res, 'admin/listProduct', {
                         pagination: pagination,
                         paginatedResults: paginatedResults
                     });
@@ -44,6 +44,43 @@ module.exports = function(app, config) {
                 if (err) return new Error(err);
                 controller.render(res, 'admin/review', {
                     products: docs,
+                    message: req.session.messages
+                });
+                if (req.session.messages) {
+                    delete req.session.messages;
+                }
+            });
+        },
+        doAddReview: function(req, res) {
+            app.getModel('Review').create({
+                'product': req.params.id,
+                'reviewerName': req.body.reviewerName,
+                'reviewerWebsiteName': req.body.reviewerWebsiteName,
+                'reviewerWebsiteURL': req.body.reviewerWebsiteURL,
+                'score': req.body.score,
+                'date': req.body.date,
+                'link': req.body.link,
+                'blurb': req.body.blurb,
+                'tags': req.body.tags.split(',')
+            }, function(err) {
+                if (err) {
+                    req.session.messages = {
+                        'error': err.message
+                    }
+                } else {
+                    req.session.messages = {
+                        'success': 'Review by ' + req.body.reviewerName + ' has been added!'
+                    }
+                }
+                res.redirect('back');
+            });
+        },
+        addReview: function(req, res) {
+            var controller = this;
+            app.getModel('Product').findById(req.params.id, function(err, doc) {
+                if (err) return new Error(err);
+                controller.render(res, 'admin/addReview', {
+                    product: doc,
                     message: req.session.messages
                 });
                 if (req.session.messages) {

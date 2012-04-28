@@ -8,7 +8,9 @@ module.exports = function(app) {
             ['get', '/', 'Admin'],
             ['post', '/review/new', 'Admin', 'newReview'],
             ['get', '/review/:type', 'Admin', 'review'],
-            ['get', '/products/list/:type/:pageNum?', 'Admin', 'productList'],
+            ['get', '/list/products/:type/:pageNum?', 'Admin', 'listProduct'],
+            ['post', '/product/:id/add/review', 'Admin', 'doAddReview'],
+            ['get', '/product/:id/add/review', 'Admin', 'addReview'],
             ['get', '/import/:site', 'Admin', 'import']
         ]
     }
