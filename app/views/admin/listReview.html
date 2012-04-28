@@ -1,0 +1,39 @@
+{{> header}}
+<!-- Main content wrapper -->
+<div class="wrapper"> 
+  
+  <!-- Static table -->
+  <div class="widget">
+    <div class="title"><img src="http://static.hoochhound.com/admin/images/icons/dark/frames.png" alt="" class="titleIcon">
+      <h6></h6>
+    </div>
+    <table cellpadding="0" cellspacing="0" width="100%" class="sTable">
+      <thead>
+        <tr>
+          <td>Reviewer Name</td>
+          <td>Reviewer Website</td>
+          <td>Score</td>
+          <td>Date</td>
+          <td>Link</td>
+          <td>Blurb</td>
+        </tr>
+      </thead>
+      <tbody>
+      {{#reviews}}
+        <tr>
+          <td>{{reviewerName}}</td>
+          <td>{{reviewerWebsiteName}}</td>
+          <td>{{score}}%</td>
+          <td>{{date}}</td>
+          <td>{{link}}</td>
+          <td>{{blurb}}</td>
+        </tr>
+        {{/reviews}}
+      </tbody>
+    </table>
+  </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+{{> footer}}

@@ -39,6 +39,11 @@ module.exports = function(app, config) {
         find: function(id, callback) {
             this.DBModel.findById(id, callback)
         },
+        findByProductId: function(id, callback) {
+            this.DBModel.find({
+                product: id
+            }, callback);
+        },
         countByProductId: function(conditions, callback) {
             this.DBModel.count({
                 product: conditions

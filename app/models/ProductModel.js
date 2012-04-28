@@ -29,10 +29,8 @@ module.exports = function(app, config) {
             var doc = new this.DBModel(newDoc);
             doc.save(callback);
         },
-        findById: function(query, callback) {
-            this.DBModel.findOne({
-                '_id': query
-            }, callback);
+        find: function(id, callback) {
+            this.DBModel.findById(id, callback)
         },
         findByName: function(query, callback) {
             this.DBModel.findOne({

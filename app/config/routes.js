@@ -11,6 +11,7 @@ module.exports = function(app) {
             ['get', '/list/products/:type/:pageNum?', 'Admin', 'listProduct'],
             ['post', '/product/:id/add/review', 'Admin', 'doAddReview'],
             ['get', '/product/:id/add/review', 'Admin', 'addReview'],
+            ['get', '/product/:id/list/review', 'Admin', 'listReview'],
             ['get', '/import/:site', 'Admin', 'import']
         ]
     }

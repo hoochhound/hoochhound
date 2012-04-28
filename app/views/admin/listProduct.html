@@ -25,8 +25,8 @@
           <td>{{producerName}}</td>
           <td>{{primaryCategory}}</td>
           <td>{{secondaryCategory}}</td>
-          <td>{{reviewCount}}</td>
-          <td><a href="/admin/product/{{_id}}/add/review" title="" class="button basic"><span>Add Review</span></a></td>
+          <td><a href="/admin/product/{{_id}}/add/review" title="" class="button basic" style="margin: 5px;"><span>New</span></a><a href="/admin/product/{{_id}}/list/review" title="" class="button basic" style="margin: 5px;"><span>List</span></a></td>
+          <td><a href="#" title="" class="button redB" style="margin: 5px;"><span>Remove</span></a></td>
         </tr>
         {{/paginatedResults}}
       </tbody>

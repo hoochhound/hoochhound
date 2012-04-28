@@ -38,6 +38,15 @@ module.exports = function(app, config) {
                 });
             }
         },
+        listReview: function(req, res) {
+            var controller = this;
+            app.getModel('Review').findByProductId(req.params.id, function(err, docs) {
+                if (err) return new Error(err);
+                controller.render(res, 'admin/listReview', {
+                    reviews: docs
+                });
+            });
+        },
         review: function(req, res) {
             var controller = this;
             app.getModel('Product').listByType(req.params.type, function(err, docs) {
@@ -77,7 +86,7 @@ module.exports = function(app, config) {
         },
         addReview: function(req, res) {
             var controller = this;
-            app.getModel('Product').findById(req.params.id, function(err, doc) {
+            app.getModel('Product').find(req.params.id, function(err, doc) {
                 if (err) return new Error(err);
                 controller.render(res, 'admin/addReview', {
                     product: doc,
