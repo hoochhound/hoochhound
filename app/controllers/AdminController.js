@@ -31,10 +31,6 @@ module.exports = function(app, config) {
                             });
                         }
                     }
-                    app.getModel('Review').countByProductId(paginatedResults[i]._id, function(err, count) {
-                        if (err) return new Error(err);
-                        paginatedResults[i].reviewCount = count;
-                    });
                     controller.render(res, 'admin/products', {
                         pagination: pagination,
                         paginatedResults: paginatedResults
