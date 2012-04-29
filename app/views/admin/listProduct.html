@@ -11,11 +11,11 @@
       <thead>
         <tr>
           <td>Name</td>
+          <td>Category</td>
           <td>Producer</td>
-          <td>Primary Category</td>
-          <td>Secondary Category</td>
+          <td>Origin</td>
           <td>Reviews</td>
-          <td></td>
+          <td>Actions</td>
         </tr>
       </thead>
       <tbody>
@@ -23,10 +23,10 @@
         <tr>
           <td>{{name}}</td>
           <td>{{producerName}}</td>
-          <td>{{primaryCategory}}</td>
-          <td>{{secondaryCategory}}</td>
-          <td><a href="/admin/product/{{_id}}/add/review" title="" class="button basic" style="margin: 5px;"><span>New</span></a><a href="/admin/product/{{_id}}/list/review" title="" class="button basic" style="margin: 5px;"><span>List</span></a></td>
-          <td><a href="#" title="" class="button redB" style="margin: 5px;"><span>Remove</span></a></td>
+          <td>{{origin}}</td>
+        <td class="fileInfo"><span><strong>Primary:</strong> {{primaryCategory}}</span><span><strong>Secondary:</strong> {{secondaryCategory}}</span></td>
+          <td><a href="/admin/product/{{_id}}/add/review" title="" class="button basic" style="margin: 5px;"><span>Add</span></a><a href="/admin/product/{{_id}}/list/review" title="" class="button basic" style="margin: 5px;"><span>List</span></a></td>
+          <td class="actBtns"><a href="#" title="Edit" class="tipS"><img src="http://static.hoochhound.com/admin/images/icons/edit.png" alt=""></a><a href="#" title="Remove" class="tipS"><img src="http://static.hoochhound.com/admin/images/icons/remove.png" alt=""></a></td>
         </tr>
         {{/paginatedResults}}
       </tbody>
