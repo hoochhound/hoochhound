@@ -17,7 +17,8 @@
     }],
     "dependencies": {
         "matador": "1.0.x",
-        "mongoose": "2.5.x"
+        "mongoose": "2.5.x",
+	"h5bp": "0.0.x"
     },
     "devDependencies": {},
     "engines": {
