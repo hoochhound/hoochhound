@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie8" lang="en"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Starter template</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- Le styles -->
+	<!-- bootstrap.css as dependencies stylesheet -->
+	<link href="css/bootstrap.css" rel="stylesheet" media="all">
+	<!-- print stylesheet from printstylesheet.com, it's standard -->
+	<link href="css/print.css" rel="stylesheet" media="print">
+	<!-- jQuery UI Stylesheet -->
+	<link rel="stylesheet" media="all" href="css/jquery-ui.css">
+	<!-- custom style from user, not from us as developer -->
+	<link href="style.css" rel="stylesheet" media="all">
+
+	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+	<!-- Le fav and touch icons -->
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72-precomposed.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114-precomposed.png">
+
+	<!-- define all variable for javascript in here -->
+	<script type="text/javascript">
+		// for login panel
+		var mouse_is_inside = false;		
+		var custom_bg_image = "images/bg.jpg";
+		var tweet = "html5";
+		var flickrid = "998875@N22";
+	</script>
+
+	<!-- for addthis -->
+	<script type="text/javascript">
+		var addthis_config = {"data_track_clickback":true};
+	</script>
+	<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=fgaeg"></script>
+	<!-- end of scripting for add this widget to load -->
+
+	<!-- for twitter widget hovercard -->
+	<script type="text/javascript" src="http://platform.twitter.com/anywhere.js?id=ZSO1guB57M6u0lm4cwqA&v=1"></script>
+
+
+	<!-- just for the demo only! -->
+	<style type="text/css">
+		#staticmenu {
+		  /* For modern browsers */
+		  /* For IE 6/7 (trigger hasLayout) */
+		  zoom: 1;
+		  padding-left: 1.5em;
+		  padding-right: 1.5em;
+		  font-family: sans-serif;
+		  font-size: 10px !important;
+		  font-weight: bold;
+		  z-index: 99;
+		  background-color: #222;
+		  position: fixed;
+		  bottom: 0;
+		  left: 0;
+		  right: 0;
+		}
+		#staticmenu:before {
+		  content: "";
+		  display: table;
+		}
+		#staticmenu:after {
+		  clear: both;
+		  content: "";
+		  display: table;
+		}
+		#staticmenu .staticlist {
+		  display: inline;
+		  float: left;
+		}
+		#staticmenu .staticbuy {
+		  display: inline;
+		  float: right;
+		}
+		#staticmenu ul {
+		  margin: 0;
+		  padding: 0;
+		  border: 0;
+		  /* For modern browsers */
+		  /* For IE 6/7 (trigger hasLayout) */
+		  zoom: 1;
+		}
+		#staticmenu ul:before {
+		  content: "";
+		  display: table;
+		}
+		#staticmenu ul:after {
+		  clear: both;
+		  content: "";
+		  display: table;
+		}
+		#staticmenu ul li {
+		  list-style-image: none;
+		  list-style-type: none;
+		  margin-left: 0px;
+		  white-space: nowrap;
+		  display: inline;
+		  float: left;
+		  padding-left: 4px;
+		  padding-right: 4px;
+		}
+		#staticmenu ul li:first-child, 
+		#staticmenu ul li.first {
+		  padding-left: 0;
+		}
+		#staticmenu ul li:last-child {
+		  padding-right: 0;
+		}
+		#staticmenu ul li.last {
+		  padding-right: 0;
+		}
+		#staticmenu ul li {
+		  border-right: 1px solid #000;
+		  border-left: 1px solid #333;
+		  padding: 0;
+		}
+		#staticmenu ul li:first-child {
+		  border-left: none;
+		}
+		#staticmenu ul li:last-child {
+		  border-right: none;
+		}
+		#staticmenu ul li a {
+		  position: relative;
+		  padding: 0.225em 0.75em;
+		  display: block;
+		  text-transform: uppercase;
+		  color: white;
+		  text-decoration: none;
+		}
+		#staticmenu ul li a:hover {
+		  text-decoration: none;
+		}
+		#staticmenu ul li a:before {
+		  display: none;
+		  position: absolute;
+		  content: "";
+		  height: 1px;
+		  top: 0;
+		  left: -1px;
+		  right: -1px;
+		  border-bottom: 2px solid red;
+		}
+		#staticmenu ul li.selected a:before,
+		#staticmenu ul li a:hover:before { display: block; }
+	</style>
+	<!-- end of style for the demo -->
+
+
+</head>
+
+<body class="blog single">
+
+
+<!-- running facebook sdk -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+<!-- starting main container as "container" class, it couldn't be reproduce -->
+<div id="container">
+
+<!-- bg white for main container -->	
+<div class="bg-container">
+
+	<!-- main structure for header section begin -->
+	<header id="header"> <!-- we need to setup color scheme on it -->
+
+		<div class="header-container"> <!-- inner header container for red bar -->
+			<div class="pattern pat-a"> <!-- pattern as background -->
+				<div class="shading"> <!-- shading as background -->
+
+					<!-- starting content for header section -->
+					<div class="inner-container">
+
+						<!-- logo begin -->
+						<div id="logo">
+							<a href="#" title="Newspaper for news and entertainment">
+								<img src="images/logo.png" alt="Newspaper" class="logo" />
+							</a>
+						</div>
+						<!-- /# end of logo -->
+
+						<!-- main container for search on the header -->
+						<div class="search">
+					
+							<form action="#" id="search" method="post" class="form-search">
+								<p class="options-text">
+									<strong>Search:</strong>
+									<div id="radio-set-search">
+										<input type="radio" id="radio1" name="radio" value="1" checked/><label for="radio1">All</label>
+										<input type="radio" id="radio2" name="radio" value="2"/><label for="radio2">News</label>
+										<input type="radio" id="radio3" name="radio" value="3"/><label for="radio3">Sport</label>
+										<input type="radio" id="radio4" name="radio" value="4"/><label for="radio4">Technology</label>
+										<input type="radio" id="radio5" name="radio" value="5"/><label for="radio5">Web</label>
+									</div>
+								</p>
+								<p class="options-input">
+									<input type="text" class="input-text input-text-search" name="s" />
+									<input type="submit" class="input-button" value="Search" name="submit-search" />
+								</p>
+							</form>
+					
+						</div>
+						<!-- /. end of form search -->
+
+						<!-- panel container for login and register on top -->
+						<div class="login-panel">
+					
+								<p class="options-text">
+									<strong>Have an  account?</strong> Please click login below
+								</p>
+								
+								<div class="reg-login-panel">
+									<a href="dl.dropbox.com/u/16816912/wct-2/home-a.jpg" class="reg-link"><span>register</span></a>
+									<a href="dl.dropbox.com/u/16816912/wct-2/shop-c.jpg" class="login-link"><span>login</span></a>
+									<div class="form-login-panel">
+										<form action="#" class="js-signin signin" method="post">
+											<fieldset class="textbox">
+											<label class="username js-username">
+												<span>Username or email</span>
+												<span class="input-wrapper">
+													<input class="js-username-field" type="text" value="" name="session[username_or_email]" autocomplete="on">
+												</span>
+											</label>
+											<label class="password js-password"> <span>Password</span>
+											<span class="input-wrapper">
+												<input class="js-password-field" type="password" value="" name="session[password]">
+											</span>
+											</label>
+											</fieldset>
+											<fieldset class="subchck">
+											<label class="remember">
+											<input type="checkbox" value="1" name="remember_me">
+											<span>Remember me</span> </label>
+											<button type="submit" class="btn submit candyblue">Sign in</button>
+											</fieldset>
+											<div class="divider"></div>
+											<p> <a class="forgot" href="#">Forgot password?</a><br /></p>
+										  </form>
+									</div>
+								</div>
+								
+						</div>
+						<!-- /. end of login panel on top -->
+						
+					</div>
+					<!-- /. end of inner-container for header content, logo and its compliment -->
+
+				</div> <!-- /. end of shading on the header -->
+			</div> <!-- /. end of pattern on the header -->
+		</div> <!-- /. end of inner header container -->
+
+
+		<!-- top navigation begin -->
+		<nav role="navigation" class="top-navigation">
+			<ul class="top-nav">
+				<li><a href="#">World</a></li>
+				<li><a href="#">Magazine</a></li>
+				<li><a href="#">Publishing</a></li>
+				<li><a href="#">Book</a></li>
+				<li><a href="#">Journal</a></li>
+				<li><a href="#">Headlines</a></li>
+				<li><a href="#">Popular</a></li>
+				<li><a href="#">Recommended</a></li>
+				<li><a href="#">Subscribe</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</nav>
+		<!-- /. top navigation end here -->
+
+
+		<nav role="navigation" class="primary-navigation">
+			<ul class="primary-nav">
+				<li class="current-menu icon-home">
+					<a href="#">Home</a>
+					<ul>
+						<li><a href="#">World</a></li>
+						<li>
+							<a href="#">Magazine</a>
+							<ul>
+								<li><a href="#">World</a></li>
+								<li><a href="#">Magazine</a></li>
+								<li><a href="#">Publishing</a></li>
+								<li><a href="#">Book</a></li>
+								<li><a href="#">Journal</a></li>
+								<li>
+									<a href="#">Headlines</a>
+									<ul>
+										<li><a href="#">World</a></li>
+										<li><a href="#">Magazine</a></li>
+										<li><a href="#">Publishing</a></li>
+										<li><a href="#">Book</a></li>
+										<li><a href="#">Journal</a></li>
+										<li><a href="#">Headlines</a></li>
+										<li><a href="#">Popular</a></li>
+										<li><a href="#">Recommended</a></li>
+										<li><a href="#">Subscribe</a></li>
+										<li><a href="#">Contact</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Popular</a></li>
+								<li><a href="#">Recommended</a></li>
+								<li><a href="#">Subscribe</a></li>
+								<li><a href="#">Contact</a></li>
+							</ul>
+						</li>
+						<li><a href="#">Publishing</a></li>
+						<li><a href="#">Book</a></li>
+						<li><a href="#">Journal</a></li>
+						<li><a href="#">Headlines</a></li>
+						<li><a href="#">Popular</a></li>
+						<li><a href="#">Recommended</a></li>
+						<li><a href="#">Subscribe</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Technology</a></li>
+				<li><a href="#">Sport</a></li>
+				<li><a href="#">Entertainment</a></li>
+				<li><a href="#">Business</a></li>
+				<li><a href="#">Health</a></li>
+				<li><a href="#">Digital</a>
+					<ul>
+						<li><a href="#">Magazine</a></li>
+						<li>
+							<a href="#">World</a>
+							<ul>
+								<li><a href="#">World</a></li>
+								<li><a href="#">Magazine</a></li>
+								<li><a href="#">Publishing</a></li>
+								<li><a href="#">Book</a></li>
+								<li><a href="#">Journal</a></li>
+								<li><a href="#">Headlines</a></li>
+								<li><a href="#">Popular</a></li>
+								<li><a href="#">Recommended</a></li>
+								<li><a href="#">Subscribe</a></li>
+								<li><a href="#">Contact</a></li>
+							</ul>
+						</li>
+						<li><a href="#">Publishing</a></li>
+						<li><a href="#">Headlines</a></li>
+						<li><a href="#">Recommended</a></li>
+						<li><a href="#">Book</a></li>
+						<li><a href="#">Journal</a></li>
+						<li><a href="#">Subscribe</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Startup</a></li>
+				<li><a href="#">Local News</a></li>
+				<li><a href="#">Music</a></li>
+				<li><a href="#">Videos</a></li>
+				<li><a href="#">Authors</a></li>
+			</ul>
+		</nav>
+		<!-- /. primary navigation end here -->
+
+
+		<!-- breadcrumb nav-bar -->
+		<nav id="nav-page" role="breadcrumb" class="floating">
+			<div class="inner-container">
+			<div class="breadcrumb">
+				<span class="info">You are in here:</span>
+				<a href="#" class="parent">Homepage</a>
+				<span class="separator">&raquo;</span>
+				<a href="#" class="child">Lifestyle</a>
+				<span class="separator">&raquo;</span>
+				<a href="#" class="child">Rockstar</a>
+				<span class="separator">&raquo;</span>
+				<span class="here">It's a sample title for you, just to know where you are right now</span>
+			</div>
+			<div class="site-time">Sunday, November 30th 2020</div>
+			</div>
+		</nav>
+		<!-- /# end of breadcrumb nav-bar -->
+
+
+	</header>
+	<!-- end of header section -->
+
+
+
+	<!-- we're start drawing content structure -->
+	<section id="primary" role="primary">
+		<div class="inner-container">
+			
+			
+			<!-- title of current page -->
+			<h5 class="page-title"><span>Homepage</span></h5>
+		
+		
+		
+			<!-- start main content container -->
+			<div role="main" id="content">
+				
+				
+
+				<article class="post blog-format-post-type type-post format-status">
+					<div class="innercontainer">
+						<div class="entry">
+							<h2 class="entry-title">Obama Unveils Plan to Cut Corporate Tax Rate to 28 Percent</h2>
+							<p>
+								Add a touch of the historically high yen, and by November, the company issued a warning to investors it would end this fiscal year with a $1.2 billion loss, prompting Moody’s to downgrade its credit rating. Today, that estimate nearly doubled. As Stringer told Bloomberg Businessweek: “You can’t keep saying ‘I had this and I had that.’ When the Thailand floods hit, I thought, well wait a minute… You don’t feel sorry for yourself, but you do occasionally say, if some of my competition had the same experience…”
+							</p>
+							<p>
+								It's a complex editing conundrum. It will be the main story tomorrow, so should have significant coverage in the paper, but whatever we report will be out of date by 10am. Then we need a package for the web as soon as possible after 10am regardless of which way the story goes. If Huhne is found guilty we'll want to cover the political ramifications, the possibility of a reshuffle as well as the very human dimension which centres on something essentially very sad: the breakdown of a marriage. And if it comes to writing about his political downfall - he will certainly resign if charged - we have to do it without prejudicing any criminal case. Our lawyers are going to be as busy as our reporters.
+							</p>
+						</div><!-- /.entry -->
+						
+
+						
+						<div id="comments">
+							<div id="respond">
+								<h2 id="reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/?p=1#respond" style="display:none;">Cancel reply</a></small></h3>
+								<form action="http://wp-themes.com/wp/wp-comments-post.php" method="post" id="commentform">
+									<p class="comment-notes">
+										Your email address will not be published. Required fields are marked <span class="required">*</span>
+									</p>
+									<p class="comment-form-author">
+										<label for="author">Name</label> <span class="helper-text">(ex: John Thor)</span> <span class="required">*</span><span class="input-wrapper"><input id="author" name="author" type="text" value="" size="30" aria-required='true'/></span>
+									</p>
+									<p class="comment-form-email">
+										<label for="email">Email</label> <span class="helper-text">(Not published)</span> <span class="required">*</span><span class="input-wrapper"><input id="email" name="email" type="text" value="" size="30" aria-required='true'/></span>
+									</p>
+									<p class="comment-form-url">
+										<label for="url">Website</label> <span class="helper-text">(Optional)</span> <span class="input-wrapper"><input id="url" name="url" type="text" value="" size="30"/></span>
+									</p>
+									<p class="comment-form-comment">
+										<label for="comment">Comment</label><span class="input-wrapper"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></span>
+									</p>
+									<p class="subscribe-to-comments">
+										<input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;"> <label for="subscribe">Notify me of followup comments via e-mail</label></p>
+									<p class="form-submit">
+										<span class="input-wrapper"><input name="submit" type="submit" id="submit" value="Post Comment"/></span>
+										<input type='hidden' name='comment_post_ID' value='1' id='comment_post_ID'/>
+										<input type='hidden' name='comment_parent' id='comment_parent' value='0'/>
+									</p>
+								</form>
+							</div>
+							<!-- #respond -->
+						</div>
+						
+
+						
+					</div>
+					<!-- End of innercontainer -->
+					
+					<aside class="entry-meta">
+						<div class="entry-meta-inner">
+						<div class="entry-meta-title">
+						    <h5>Article info</h5>
+						</div>
+						<div class="entry-meta-items">
+						    <div class="entry-meta-item meta-author">
+						    	<h6>Author</h6>
+						    	<div class="entry-meta-wrapper">
+									<a class="author-image" url="#" title="View all posts by name" rel="author"><img src="https://twimg0-a.akamaihd.net/profile_images/1219761744/fgaeg-red-400_reasonably_small.jpg" alt="author name"></a>
+						    		<span class="author vcard">
+										<strong>John Doelah</strong><br />
+										<span class="post-total">12 posts in total</span>
+										<a class="url fn n" href="#" title="View all posts by name" rel="author">See post &rarr;</a>
+										</span>
+						    	</div>
+						    </div>
+						    <div class="entry-meta-item meta-category">
+						    	<h6>Categories</h6>
+						    	<div class="entry-meta-wrapper">
+								<a href="#">Development</a>, <a href="#">Resources</a>
+								</div>
+						    </div>
+						    <div class="entry-meta-item meta-tags">
+						    	<h6>Related Tags</h6>
+						    	<div class="entry-meta-wrapper">
+						    		<a href="#">place</a>, <a href="#">more</a>, <a href="#">tags</a>, <a href="#">here</a>
+						    	</div>
+						    </div>
+						    <div class="entry-meta-item meta-date">
+						    	<h6>Date Published</h6>
+						    	<div class="entry-meta-wrapper">
+									<a href="#" title="3:23 pm" rel="bookmark"><time class="entry-date" datetime="2011-05-04T15:23:31+00:00" pubdate="">May 4, 2011</time></a>
+								</div>
+						    </div>
+						    <div class="entry-meta-item meta-feedback">
+						    	<h6>Feedback</h6>
+						    	<div class="entry-meta-wrapper">
+						    		<a href="#">34 Comments</a><br /> <a href="#">21 Likes</a>
+						    	</div>
+						    </div>
+						</div>
+						</div>
+					</aside>
+					<!-- .entry-meta -->
+
+				</article>
+
+
+
+
+
+				
+
+			</div>
+			<!-- /# end of main content container, prepare for sidebar -->
+		
+		
+		</div>
+		<!-- End of primary inner container -->
+	</section>
+	<!-- End of primary section -->
+
+
+
+	<!-- footer page starting -->
+	<footer id="footer">
+
+		<!-- secondary footer navigation begin -->
+		<nav role="secondary footer navigation" class="sec-footer-nav">
+			<ul class="sec-foot-nav">
+				<li><a href="#">World</a></li>
+				<li><a href="#">Magazine</a></li>
+				<li><a href="#">Publishing</a></li>
+				<li><a href="#">Book</a></li>
+				<li><a href="#">Journal</a></li>
+				<li><a href="#">Headlines</a></li>
+				<li><a href="#">Popular</a></li>
+				<li><a href="#">Recommended</a></li>
+				<li><a href="#">Entertainment</a></li>
+				<li><a href="#">Business</a></li>
+				<li><a href="#">Health</a></li>
+				<li><a href="#">Subscribe</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</nav>
+		<!-- /.sec-footer-nav secondary footer nav end here -->
+
+
+		<!-- widget areas on footer begin -->
+		<div role="complementary" class="widget-area" id="footer-widget">
+		    <aside class="widget widget_pages">
+				<div class="widget-inner-container">
+			        <div class="widget-title">
+						<h5 class="wt">Trending today</h5>
+					</div>
+				    <ul>
+				        <li><a href="#">Does It Validate? Site-Wide Markup Validation</a></li>
+				        <li><a href="#">Circle Menu: A Circular Menu jQuery Plugin</a></li>
+				        <li><a href="#">Announcing Amber.js: SproutCore Framework</a></li>
+				        <li><a href="#">Tips for hosting providers and webmasters</a></li>
+				    </ul>
+					<a href="#" class="more-link">More Trending News</a>
+				</div>			
+		    </aside>
+		    <aside class="widget widget_categories">
+				<div class="widget-inner-container">
+			        <div class="widget-title">
+						<h5 class="wt">World Sport</h5>
+					</div>
+				    <ul>
+				        <li><a href="#">Circle Menu: A Circular Menu jQuery Plugin</a></li>
+				        <li><a href="#">Does It Validate? Site-Wide Markup Validation</a></li>
+				        <li><a href="#">Tips for hosting providers and webmasters</a></li>
+				        <li><a href="#">Announcing Amber.js: SproutCore Framework</a></li>
+				    </ul>
+					<a href="#" class="more-link">More Sport</a>		
+				</div>	
+		    </aside>
+		    <aside class="widget widget_archive">
+				<div class="widget-inner-container">
+			        <div class="widget-title">
+						<h5 class="wt">What's Happening now</h5>
+					</div>
+				    <ul>
+				        <li><a href="#">Tips for hosting providers and webmasters</a></li>
+				        <li><a href="#">Does It Validate? Site-Wide Markup Validation</a></li>
+				        <li><a href="#">Circle Menu: A Circular Menu jQuery Plugin</a></li>
+				        <li><a href="#">Announcing Amber.js: SproutCore Framework</a></li>
+				    </ul>
+					<a href="#" class="more-link">See more happening news</a>	
+				</div>		
+		    </aside>
+		    <aside class="widget widget_meta">
+				<div class="widget-inner-container">
+			        <div class="widget-title">
+						<h5 class="wt">Other Lifestyle</h5>
+					</div>
+				    <ul>
+				        <li><a href="#">Announcing Amber.js: SproutCore Framework</a></li>
+				        <li><a href="#">Does It Validate? Site-Wide Markup Validation</a></li>
+				        <li><a href="#">Tips for hosting providers and webmasters</a></li>
+				        <li><a href="#">Circle Menu: A Circular Menu jQuery Plugin</a></li>
+				    </ul>
+					<a href="#" class="more-link">More Lifestyle</a>			
+				</div>
+		    </aside>
+		</div>
+		<!-- /#footer-widget end of widget areas on footer -->
+
+
+		<!-- carousel for news on footer page -->
+		<div class="news-footer">
+		    <div class="news-footer-title">Recommended Reading</div>
+			<div class="carousel-container">
+    			<ul id="news-footer-carousel">
+			        <li class="news-footer-list">
+			            <a href="#" class="news-footer-item-image">
+			                <img src="images/avatar.jpg" alt="" />
+			            </a>
+		                <div class="news-footer-item">
+		                    <span class="news-footer-cat"><a href="#">Analysis</a></span>
+		                    <span class="news-footer-item-title"><a href="#">Introducing the World's Tiniest Frog: Smaller Than a Dime</a></span>
+		                    <span class="news-footer-item-author">by <a href="#">Bima Arafah</a></span>
+		                </div>
+			        </li>
+			        <li class="news-footer-list">
+			            <a href="#" class="news-footer-item-image">
+			                <img src="images/avatar.jpg" alt="" />
+			            </a>
+		                <div class="news-footer-item">
+		                    <span class="news-footer-cat"><a href="#">Opinion</a></span>
+		                    <span class="news-footer-item-title"><a href="#">9 Things You Might Not Know About Tim Tebow</a></span>
+		                    <span class="news-footer-item-author">by <a href="#">Onnay Okheng</a></span>
+		                </div>
+			        </li>
+			        <li class="news-footer-list">
+			            <a href="#" class="news-footer-item-image">
+			                <img src="images/avatar.jpg" alt="" />
+			            </a>
+		                <div class="news-footer-item">
+		                    <span class="news-footer-cat"><a href="#">category</a></span>
+		                    <span class="news-footer-item-title"><a href="#">Governments Crack Down on Offbeat Baby Names</a></span>
+		                    <span class="news-footer-item-author">by <a href="#">Angela Doe</a></span>
+		                </div>
+			        </li>
+			        <li class="news-footer-list">
+			            <a href="#" class="news-footer-item-image">
+			                <img src="images/avatar.jpg" alt="" />
+			            </a>
+		                <div class="news-footer-item">
+		                    <span class="news-footer-cat"><a href="#">category</a></span>
+		                    <span class="news-footer-item-title"><a href="#">John Parr Updates St. Elmo's Fire Theme Song for Tim Tebow</a></span>
+		                    <span class="news-footer-item-author">by <a href="#">Keshrim Phet</a></span>
+		                </div>
+			        </li>
+			        <li class="news-footer-list">
+			            <a href="#" class="news-footer-item-image">
+			                <img src="images/avatar.jpg" alt="" />
+			            </a>
+		                <div class="news-footer-item">
+		                    <span class="news-footer-cat"><a href="#">category</a></span>
+		                    <span class="news-footer-item-title"><a href="#">title link</a></span>
+		                    <span class="news-footer-item-author">by <a href="#">author link</a></span>
+		                </div>
+			        </li>
+			        <li class="news-footer-list">
+			            <a href="#" class="news-footer-item-image">
+			                <img src="images/avatar.jpg" alt="" />
+			            </a>
+		                <div class="news-footer-item">
+		                    <span class="news-footer-cat"><a href="#">category</a></span>
+		                    <span class="news-footer-item-title"><a href="#">title link</a></span>
+		                    <span class="news-footer-item-author">by <a href="#">author link</a></span>
+		                </div>
+			        </li>
+			        <li class="news-footer-list">
+			            <a href="#" class="news-footer-item-image">
+			                <img src="images/avatar.jpg" alt="" />
+			            </a>
+		                <div class="news-footer-item">
+		                    <span class="news-footer-cat"><a href="#">category</a></span>
+		                    <span class="news-footer-item-title"><a href="#">title link</a></span>
+		                    <span class="news-footer-item-author">by <a href="#">author link</a></span>
+		                </div>
+			        </li>
+			        <li class="news-footer-list">
+			            <a href="#" class="news-footer-item-image">
+			                <img src="images/avatar.jpg" alt="" />
+			            </a>
+		                <div class="news-footer-item">
+		                    <span class="news-footer-cat"><a href="#">category</a></span>
+		                    <span class="news-footer-item-title"><a href="#">title link</a></span>
+		                    <span class="news-footer-item-author">by <a href="#">author link</a></span>
+		                </div>
+			        </li>
+			        <li class="news-footer-list">
+			            <a href="#" class="news-footer-item-image">
+			                <img src="images/avatar.jpg" alt="" />
+			            </a>
+		                <div class="news-footer-item">
+		                    <span class="news-footer-cat"><a href="#">category</a></span>
+		                    <span class="news-footer-item-title"><a href="#">title link</a></span>
+		                    <span class="news-footer-item-author">by <a href="#">author link</a></span>
+		                </div>
+			        </li>
+			        <li class="news-footer-list">
+			            <a href="#" class="news-footer-item-image">
+			                <img src="images/avatar.jpg" alt="" />
+			            </a>
+		                <div class="news-footer-item">
+		                    <span class="news-footer-cat"><a href="#">category</a></span>
+		                    <span class="news-footer-item-title"><a href="#">title link</a></span>
+		                    <span class="news-footer-item-author">by <a href="#">author link</a></span>
+		                </div>
+			        </li>
+			        <li class="news-footer-list">
+			            <a href="#" class="news-footer-item-image">
+			                <img src="images/avatar.jpg" alt="" />
+			            </a>
+		                <div class="news-footer-item">
+		                    <span class="news-footer-cat"><a href="#">category</a></span>
+		                    <span class="news-footer-item-title"><a href="#">title link</a></span>
+		                    <span class="news-footer-item-author">by <a href="#">author link</a></span>
+		                </div>
+			        </li>
+			        <li class="news-footer-list">
+			            <a href="#" class="news-footer-item-image">
+			                <img src="images/avatar.jpg" alt="" />
+			            </a>
+		                <div class="news-footer-item">
+		                    <span class="news-footer-cat"><a href="#">category</a></span>
+		                    <span class="news-footer-item-title"><a href="#">title link</a></span>
+		                    <span class="news-footer-item-author">by <a href="#">author link</a></span>
+		                </div>
+			        </li>
+			    </ul>
+				<a class="prev" id="news-footer-prev" href="#"><span>prev</span></a>
+				<a class="next" id="news-footer-next" href="#"><span>next</span></a>
+				<div class="pagination" id="news-footer-pag"></div>
+			</div>
+		</div>
+		<!-- /. end of carousel on footer page -->
+
+
+
+		<!-- primary footer navigation begin -->
+		<nav role="navigation" class="primary-ft-navigation">
+			<ul class="primary-ft-nav">
+				<li class="icon-home"><a href="#">Home</a></li>
+				<li><a href="#">World</a></li>
+				<li><a href="#">Magazine</a></li>
+				<li><a href="#">Publishing</a></li>
+				<li><a href="#">Book</a></li>
+				<li><a href="#">Journal</a></li>
+				<li><a href="#">Headlines</a></li>
+				<li><a href="#">Popular</a></li>
+				<li><a href="#">Author</a></li>
+				<li><a href="#">Happening</a></li>
+				<li><a href="#">Technology</a></li>
+				<li><a href="#">Business</a></li>
+				<li><a href="#">Recommended</a></li>
+			</ul>
+		</nav>
+		<!-- /. primary footer navigation end here -->
+
+
+		<!-- subscribe structure on footer -->
+		<div class="ft-subscribe">
+			<div class="pattern pat-b">
+				<div class="inner-container">
+					<div class="subscribe">
+						<span>subscribe newsletter</span>
+
+						<!-- main container for search on the header -->
+						<div class="subscribe-box">
+					
+							<form action="#" id="subscribe-form" method="post">
+								<p class="options-input">
+								    <input type="text" class="input-text input-text-search" name="s" />
+									<input type="submit" class="input-button" value="Subscribe" name="submit-search" />
+								</p>
+							</form>
+					
+						</div>
+						<!-- /. end of form search -->
+			
+						
+					</div>
+					<div class="share-social-buttons">
+						<span>we are social too</span>	
+						<!-- AddThis Button BEGIN -->
+						<div class="addthis_toolbox addthis_default_style ">
+							<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+							<a class="addthis_button_tweet"></a>
+							<!-- we don't need this <a class="addthis_button_google_plusone" g:plusone:size="medium"></a> -->
+							<a class="addthis_counter addthis_pill_style"></a>
+						</div>
+						<!-- AddThis Button END -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /. end of subscribe markup-->
+
+
+		<div class="ft-logo">
+		    <div class="cols-logo">
+		    	<a href="#" title="Newspaper for news and entertainment">
+		    	    <img src="images/logo.png" alt="logo" class="logo" />
+		    	</a>
+		    </div>
+		    <div class="cols-nav-credit">
+		        <ul>
+		            <li><a href="">our authors</a></li>
+		            <li><a href="">publications</a></li>
+		            <li><a href="">journals</a></li>
+		            <li><a href="">blogs</a></li>
+		            <li><a href="">about</a></li>
+		            <li><a href="">contact</a></li>
+		        </ul>
+		        <p class="copyrights">The Newspaper WordPress Theme You’ve Been Waiting Long Enough!   <a href="#" class="back-top more-link">Back to top</a></p>
+		    </div>
+		</div>
+
+
+
+	</footer>
+	<!-- /# end of footer page -->
+
+</div>
+<!-- /. end of bg-container with white color -->
+
+</div>
+<!-- /.container end of main container class -->
+<!-- end of document page -->
+
+
+<div id="staticmenu">
+    <ul class="staticlist">
+        <li><a href="index.html">home i</a></li>
+        <li><a href="home.html">home ii</a></li>
+        <li><a href="homepage.html">home iii</a></li>
+        <li><a href="category.html">cat i</a></li>
+        <li><a href="category-standard.html">cat ii</a></li>
+        <li><a href="detail.html">detail</a></li>
+        <li><a href="blog.html">blog</a></li>
+        <li><a href="blog-detail.html">blog detail</a></li>
+        <li class="selected"><a href="contact.html">contact</a></li>
+        <li><a href="archive.html">archive</a></li>
+    </ul>
+</div>
+
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="js/libs/jquery-1.7.1.min.js"></script>
+<script src="js/libs/jquery-ui-1.8.16.min.js"></script>
+
+<!-- scripts concatenated and minified via build script -->
+<script src="js/plugins.js"></script>
+<script src="js/script.js"></script>
+<!-- end scripts -->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-9262526-27']);
+  _gaq.push(['_setDomainName', 'nesia.me']);
+  _gaq.push(['_trackPageview']);
+  _gaq.push(['_trackPageLoadTime']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body>
+</html>

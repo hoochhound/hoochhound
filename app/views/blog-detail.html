@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie8" lang="en"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Starter template</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- Le styles -->
+	<!-- bootstrap.css as dependencies stylesheet -->
+	<link href="css/bootstrap.css" rel="stylesheet" media="all">
+	<!-- print stylesheet from printstylesheet.com, it's standard -->
+	<link href="css/print.css" rel="stylesheet" media="print">
+	<!-- jQuery UI Stylesheet -->
+	<link rel="stylesheet" media="all" href="css/jquery-ui.css">
+	<!-- custom style from user, not from us as developer -->
+	<link href="style.css" rel="stylesheet" media="all">
+
+	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+	<!-- Le fav and touch icons -->
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72-precomposed.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114-precomposed.png">
+
+	<!-- define all variable for javascript in here -->
+	<script type="text/javascript">
+		// for login panel
+		var mouse_is_inside = false;		
+		var custom_bg_image = "images/bg.jpg";
+		var tweet = "html5";
+		var flickrid = "998875@N22";
+	</script>
+
+	<!-- for addthis -->
+	<script type="text/javascript">
+		var addthis_config = {"data_track_clickback":true};
+	</script>
+	<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=fgaeg"></script>
+	<!-- end of scripting for add this widget to load -->
+
+	<!-- for twitter widget hovercard -->
+	<script type="text/javascript" src="http://platform.twitter.com/anywhere.js?id=ZSO1guB57M6u0lm4cwqA&v=1"></script>
+
+
+	<!-- just for the demo only! -->
+	<style type="text/css">
+		#staticmenu {
+		  /* For modern browsers */
+		  /* For IE 6/7 (trigger hasLayout) */
+		  zoom: 1;
+		  padding-left: 1.5em;
+		  padding-right: 1.5em;
+		  font-family: sans-serif;
+		  font-size: 10px !important;
+		  font-weight: bold;
+		  z-index: 99;
+		  background-color: #222;
+		  position: fixed;
+		  bottom: 0;
+		  left: 0;
+		  right: 0;
+		}
+		#staticmenu:before {
+		  content: "";
+		  display: table;
+		}
+		#staticmenu:after {
+		  clear: both;
+		  content: "";
+		  display: table;
+		}
+		#staticmenu .staticlist {
+		  display: inline;
+		  float: left;
+		}
+		#staticmenu .staticbuy {
+		  display: inline;
+		  float: right;
+		}
+		#staticmenu ul {
+		  margin: 0;
+		  padding: 0;
+		  border: 0;
+		  /* For modern browsers */
+		  /* For IE 6/7 (trigger hasLayout) */
+		  zoom: 1;
+		}
+		#staticmenu ul:before {
+		  content: "";
+		  display: table;
+		}
+		#staticmenu ul:after {
+		  clear: both;
+		  content: "";
+		  display: table;
+		}
+		#staticmenu ul li {
+		  list-style-image: none;
+		  list-style-type: none;
+		  margin-left: 0px;
+		  white-space: nowrap;
+		  display: inline;
+		  float: left;
+		  padding-left: 4px;
+		  padding-right: 4px;
+		}
+		#staticmenu ul li:first-child, 
+		#staticmenu ul li.first {
+		  padding-left: 0;
+		}
+		#staticmenu ul li:last-child {
+		  padding-right: 0;
+		}
+		#staticmenu ul li.last {
+		  padding-right: 0;
+		}
+		#staticmenu ul li {
+		  border-right: 1px solid #000;
+		  border-left: 1px solid #333;
+		  padding: 0;
+		}
+		#staticmenu ul li:first-child {
+		  border-left: none;
+		}
+		#staticmenu ul li:last-child {
+		  border-right: none;
+		}
+		#staticmenu ul li a {
+		  position: relative;
+		  padding: 0.225em 0.75em;
+		  display: block;
+		  text-transform: uppercase;
+		  color: white;
+		  text-decoration: none;
+		}
+		#staticmenu ul li a:hover {
+		  text-decoration: none;
+		}
+		#staticmenu ul li a:before {
+		  display: none;
+		  position: absolute;
+		  content: "";
+		  height: 1px;
+		  top: 0;
+		  left: -1px;
+		  right: -1px;
+		  border-bottom: 2px solid red;
+		}
+		#staticmenu ul li.selected a:before,
+		#staticmenu ul li a:hover:before { display: block; }
+	</style>
+	<!-- end of style for the demo -->
+
+
+</head>
+
+<body class="blog single">
+
+
+<!-- running facebook sdk -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+<!-- starting main container as "container" class, it couldn't be reproduce -->
+<div id="container">
+
+<!-- bg white for main container -->	
+<div class="bg-container">
+
+	<!-- main structure for header section begin -->
+	<header id="header"> <!-- we need to setup color scheme on it -->
+
+		<div class="header-container"> <!-- inner header container for red bar -->
+			<div class="pattern pat-a"> <!-- pattern as background -->
+				<div class="shading"> <!-- shading as background -->
+
+					<!-- starting content for header section -->
+					<div class="inner-container">
+
+						<!-- logo begin -->
+						<div id="logo">
+							<a href="#" title="Newspaper for news and entertainment">
+								<img src="images/logo.png" alt="Newspaper" class="logo" />
+							</a>
+						</div>
+						<!-- /# end of logo -->
+
+						<!-- main container for search on the header -->
+						<div class="search">
+					
+							<form action="#" id="search" method="post" class="form-search">
+								<p class="options-text">
+									<strong>Search:</strong>
+									<div id="radio-set-search">
+										<input type="radio" id="radio1" name="radio" value="1" checked/><label for="radio1">All</label>
+										<input type="radio" id="radio2" name="radio" value="2"/><label for="radio2">News</label>
+										<input type="radio" id="radio3" name="radio" value="3"/><label for="radio3">Sport</label>
+										<input type="radio" id="radio4" name="radio" value="4"/><label for="radio4">Technology</label>
+										<input type="radio" id="radio5" name="radio" value="5"/><label for="radio5">Web</label>
+									</div>
+								</p>
+								<p class="options-input">
+									<input type="text" class="input-text input-text-search" name="s" />
+									<input type="submit" class="input-button" value="Search" name="submit-search" />
+								</p>
+							</form>
+					
+						</div>
+						<!-- /. end of form search -->
+
+						<!-- panel container for login and register on top -->
+						<div class="login-panel">
+					
+								<p class="options-text">
+									<strong>Have an  account?</strong> Please click login below
+								</p>
+								
+								<div class="reg-login-panel">
+									<a href="dl.dropbox.com/u/16816912/wct-2/home-a.jpg" class="reg-link"><span>register</span></a>
+									<a href="dl.dropbox.com/u/16816912/wct-2/shop-c.jpg" class="login-link"><span>login</span></a>
+									<div class="form-login-panel">
+										<form action="#" class="js-signin signin" method="post">
+											<fieldset class="textbox">
+											<label class="username js-username">
+												<span>Username or email</span>
+												<span class="input-wrapper">
+													<input class="js-username-field" type="text" value="" name="session[username_or_email]" autocomplete="on">
+												</span>
+											</label>
+											<label class="password js-password"> <span>Password</span>
+											<span class="input-wrapper">
+												<input class="js-password-field" type="password" value="" name="session[password]">
+											</span>
+											</label>
+											</fieldset>
+											<fieldset class="subchck">
+											<label class="remember">
+											<input type="checkbox" value="1" name="remember_me">
+											<span>Remember me</span> </label>
+											<button type="submit" class="btn submit candyblue">Sign in</button>
+											</fieldset>
+											<div class="divider"></div>
+											<p> <a class="forgot" href="#">Forgot password?</a><br /></p>
+										  </form>
+									</div>
+								</div>
+								
+						</div>
+						<!-- /. end of login panel on top -->
+						
+					</div>
+					<!-- /. end of inner-container for header content, logo and its compliment -->
+
+				</div> <!-- /. end of shading on the header -->
+			</div> <!-- /. end of pattern on the header -->
+		</div> <!-- /. end of inner header container -->
+
+
+		<!-- top navigation begin -->
+		<nav role="navigation" class="top-navigation">
+			<ul class="top-nav">
+				<li><a href="#">World</a></li>
+				<li><a href="#">Magazine</a></li>
+				<li><a href="#">Publishing</a></li>
+				<li><a href="#">Book</a></li>
+				<li><a href="#">Journal</a></li>
+				<li><a href="#">Headlines</a></li>
+				<li><a href="#">Popular</a></li>
+				<li><a href="#">Recommended</a></li>
+				<li><a href="#">Subscribe</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</nav>
+		<!-- /. top navigation end here -->
+
+
+		<nav role="navigation" class="primary-navigation">
+			<ul class="primary-nav">
+				<li class="current-menu icon-home">
+					<a href="#">Home</a>
+					<ul>
+						<li><a href="#">World</a></li>
+						<li>
+							<a href="#">Magazine</a>
+							<ul>
+								<li><a href="#">World</a></li>
+								<li><a href="#">Magazine</a></li>
+								<li><a href="#">Publishing</a></li>
+								<li><a href="#">Book</a></li>
+								<li><a href="#">Journal</a></li>
+								<li>
+									<a href="#">Headlines</a>
+									<ul>
+										<li><a href="#">World</a></li>
+										<li><a href="#">Magazine</a></li>
+										<li><a href="#">Publishing</a></li>
+										<li><a href="#">Book</a></li>
+										<li><a href="#">Journal</a></li>
+										<li><a href="#">Headlines</a></li>
+										<li><a href="#">Popular</a></li>
+										<li><a href="#">Recommended</a></li>
+										<li><a href="#">Subscribe</a></li>
+										<li><a href="#">Contact</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Popular</a></li>
+								<li><a href="#">Recommended</a></li>
+								<li><a href="#">Subscribe</a></li>
+								<li><a href="#">Contact</a></li>
+							</ul>
+						</li>
+						<li><a href="#">Publishing</a></li>
+						<li><a href="#">Book</a></li>
+						<li><a href="#">Journal</a></li>
+						<li><a href="#">Headlines</a></li>
+						<li><a href="#">Popular</a></li>
+						<li><a href="#">Recommended</a></li>
+						<li><a href="#">Subscribe</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Technology</a></li>
+				<li><a href="#">Sport</a></li>
+				<li><a href="#">Entertainment</a></li>
+				<li><a href="#">Business</a></li>
+				<li><a href="#">Health</a></li>
+				<li><a href="#">Digital</a>
+					<ul>
+						<li><a href="#">Magazine</a></li>
+						<li>
+							<a href="#">World</a>
+							<ul>
+								<li><a href="#">World</a></li>
+								<li><a href="#">Magazine</a></li>
+								<li><a href="#">Publishing</a></li>
+								<li><a href="#">Book</a></li>
+								<li><a href="#">Journal</a></li>
+								<li><a href="#">Headlines</a></li>
+								<li><a href="#">Popular</a></li>
+								<li><a href="#">Recommended</a></li>
+								<li><a href="#">Subscribe</a></li>
+								<li><a href="#">Contact</a></li>
+							</ul>
+						</li>
+						<li><a href="#">Publishing</a></li>
+						<li><a href="#">Headlines</a></li>
+						<li><a href="#">Recommended</a></li>
+						<li><a href="#">Book</a></li>
+						<li><a href="#">Journal</a></li>
+						<li><a href="#">Subscribe</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Startup</a></li>
+				<li><a href="#">Local News</a></li>
+				<li><a href="#">Music</a></li>
+				<li><a href="#">Videos</a></li>
+				<li><a href="#">Authors</a></li>
+			</ul>
+		</nav>
+		<!-- /. primary navigation end here -->
+
+
+		<!-- breadcrumb nav-bar -->
+		<nav id="nav-page" role="breadcrumb" class="floating">
+			<div class="inner-container">
+			<div class="breadcrumb">
+				<span class="info">You are in here:</span>
+				<a href="#" class="parent">Homepage</a>
+				<span class="separator">&raquo;</span>
+				<a href="#" class="child">Lifestyle</a>
+				<span class="separator">&raquo;</span>
+				<a href="#" class="child">Rockstar</a>
+				<span class="separator">&raquo;</span>
+				<span class="here">It's a sample title for you, just to know where you are right now</span>
+			</div>
+			<div class="site-time">Sunday, November 30th 2020</div>
+			</div>
+		</nav>
+		<!-- /# end of breadcrumb nav-bar -->
+
+
+	</header>
+	<!-- end of header section -->
+
+
+
+	<!-- we're start drawing content structure -->
+	<section id="primary" role="primary">
+		<div class="inner-container">
+			
+			
+			<!-- title of current page -->
+			<h5 class="page-title"><span>Blog</span></h5>
+		
+		
+		
+			<!-- start main content container -->
+			<div role="main" id="content">
+				
+				
+
+				<article class="post blog-format-post-type type-post format-status">
+					<div class="innercontainer">
+						<div class="entry">
+							<h2 class="entry-title">Obama Unveils Plan to Cut Corporate Tax Rate to 28 Percent</h2>
+							<a href="#" class="entry-thumb"><img src="http://speckyboy.com/wp-content/uploads/2012/01/designnewsfeb_01.jpg"></a>
+							<p>
+								Add a touch of the historically high yen, and by November, the company issued a warning to investors it would end this fiscal year with a $1.2 billion loss, prompting Moody’s to downgrade its credit rating. Today, that estimate nearly doubled. As Stringer told Bloomberg Businessweek: “You can’t keep saying ‘I had this and I had that.’ When the Thailand floods hit, I thought, well wait a minute… You don’t feel sorry for yourself, but you do occasionally say, if some of my competition had the same experience…”
+							</p>
+							<p>
+								It's a complex editing conundrum. It will be the main story tomorrow, so should have significant coverage in the paper, but whatever we report will be out of date by 10am. Then we need a package for the web as soon as possible after 10am regardless of which way the story goes. If Huhne is found guilty we'll want to cover the political ramifications, the possibility of a reshuffle as well as the very human dimension which centres on something essentially very sad: the breakdown of a marriage. And if it comes to writing about his political downfall - he will certainly resign if charged - we have to do it without prejudicing any criminal case. Our lawyers are going to be as busy as our reporters.
+							</p>
+							<h3>The slug and the squirrel for heading 3</h3>
+							<p>
+								It’s Hirai’s headache now. With years at the helm of both the U.S. and Japanese arms of Sony Computer Entertainment, he is not short on qualifications. But as he steps up and Stringer steps down, one hopes there are no lingering illusions that a Japanese citizen is better equipped to lead this global company that started in Japan. If Sony – or any of us, for that matter – can take one thing away from a howler of a year like 2011, it’s that we’re in a global game now. Without accepting that, Sony doesn’t have a chance of staying in the game, let alone getting to the next round.
+							</p>
+							<p>
+								Bill Shankly, the late legendary manager of Liverpool Football Club, is forever remembered for this dramatic claim: “Football isn’t about life and death. I can assure you it’s much more important than that.” Shankly didn’t quite mean it the way it came out, but the quote endured, a slogan <a href="#">that encapsulates sample link to any page</a> the cosmic power of the world’s most popular sport and the unparalleled emotion that underlies it. But, as the bloody events in the Egyptian city of Port Said prove, the beautiful game is sadly often about death.
+							</p>
+							<h4>Jeffrey Macgruber was my teacher</h4>
+							<p>
+								He continued: "It would be a shame for Sergei to waste such a God-given talent at this stage. He could take up tattooing at a later date."
+							</p>
+							<p>
+								Polunin has not, however, given any indication about his future plans, changing his Twitter biography to "Principal Dancer of ?" and apparently telling his former employers that he intended to give up dancing entirely. The Guardian's dance critic Judith Mackrell described his departure from the Royal Ballet as "a horrible loss".
+							</p>
+							<div id="attachment_55" class="wp-caption aligncenter"><a href="http://www.flickr.com/photos/fgaeg/4447217816/in/photostream"><img src="http://farm5.staticflickr.com/4030/4447217816_57f1981866_z.jpg" alt="" title="color" class="size-full wp-image-55"></a><p class="wp-caption-text">Anton Chekhov was born on 29 January 1860, the third of six surviving children, in Taganrog, a port on the Sea of Azov in southern Russia.</p></div>
+							<p>
+								There weren't many programmes about ballet in Spain at the time, and the ones there were showed ballet as very serious and professional. Suddenly, Fame came out and it was about dance for young people – as a way of letting out energy and frustrations, and understanding life. It was mind-blowing – but it wasn't true to life, or at least not to life in a Spanish ballet school. We just learned ballet – we didn't share the school with singers and actors. For us, it was amazing that a school like that could even exist.
+							</p>
+							<p>
+								According to Meades, Charles de Gaulle gave up Algeria because decolonisation was fashionable in America. Undesirables were moved from city centres to outlying the suburbs, which are now left to rot by the bourgeoisie (who do not admit they are bourgeois, incidentally, because they have never forgotten their "cobble-loving soixante-huitard youth") because the French secretly long for their own Detroit, their own Los Angeles, their own South Bronx. And the Gauls borrow from America in general so they can avoid succumbing to the organised social lie they tell themselves and the outside world, that the nation is still the implacable, slow, civilised, beautiful place it used to be.
+							</p>
+							<div id="attachment_55" class="wp-caption aligncenter"><a href="http://circlemeetups.com/"><img src="http://speckyboy.com/wp-content/uploads/2012/01/stylesinspiration234_01.jpg" alt="" title="color" class="size-full wp-image-55"></a><p class="wp-caption-text">Give you a visual overview of current web design trends, beautiful typography and highlight innovative web technologies. You’ll love this site</p></div>
+							<p>
+								Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.
+							</p>
+							<h3>Built for large scale content</h3>
+							<p>
+								Add a touch of the historically high yen, and by November, the company issued a warning to investors it would end this fiscal year with a $1.2 billion loss, prompting Moody’s to downgrade its credit rating. Today, that estimate nearly doubled. As Stringer told Bloomberg Businessweek: “You can’t keep saying ‘I had this and I had that.’ When the Thailand floods hit, I thought, well wait a minute… You don’t feel sorry for yourself, but you do occasionally say, if some of my competition had the same experience…”
+							</p>
+							<p>
+								It's a complex editing conundrum. It will be the main story tomorrow, so should have significant coverage in the paper, but whatever we report will be out of date by 10am. Then we need a package for the web as soon as possible after 10am regardless of which way the story goes. If Huhne is found guilty we'll want to cover the political ramifications, the possibility of a reshuffle as well as the very human dimension which centres on something essentially very sad: the breakdown of a marriage. And if it comes to writing about his political downfall - he will certainly resign if charged - we have to do it without prejudicing any criminal case. Our lawyers are going to be as busy as our reporters.
+							</p>
+							<h3>Conclusion</h3>							
+							<p>
+								The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way. 
+							</p>
+						</div><!-- /.entry -->
+						
+						<footer class="entry-meta">
+							<p>
+								<strong>Posted in: </strong> 
+									<a href="#" title="View all posts in Resources" rel="category tag">Resources</a>, 
+									<a href="#" title="View all posts in Development" rel="category tag">Development</a> <br />
+								<strong>Tags: </strong> 
+									<a href="#">place</a>, 
+									<a href="#">any other</a>, 
+									<a href="#">tags</a>, 
+									<a href="#">in here</a>, 
+									<a href="#">guys</a>
+							</p>
+							<p class="facebook-share-like"><a class="addthis_button_facebook_like" fb:like:layout="standard"></a></p>
+							<div class="addthis_toolbox addthis_default_style ">
+								<span class="cols-place">
+									<a class="addthis_button_tweet"></a></span>
+								<span class="cols-place">
+									<a class="addthis_button_google_plusone" g:plusone:size="medium"></a></span>
+						        <span class="cols-place">
+									<a class="addthis_counter addthis_pill_style"></a></span>
+						        <span class="cols-place viewing"><span>135 Views</span></span>
+							</div>
+
+							<div id="author-info">
+								<div id="author-title">
+								    <span class="title">About Author</span>
+								    <span class="name">John Doelah</span>
+								</div>
+								<div id="author-avatar">
+									<img alt="" src="http://0.gravatar.com/avatar/479f71ad0d4c4f72b17cffa8b28b3dbf?s=68&amp;d=retro&amp;r=G" class="avatar avatar-68 grav-hashed grav-hijack" height="68" width="68" id="grav-479f71ad0d4c4f72b17cffa8b28b3dbf-0">
+								</div>
+								<!-- #author-avatar -->
+								<div id="author-description">
+									 Just a Theme Demo user finding his way in this wild, wacky world of themes. The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.
+									<div id="author-link">
+										<a href="#" rel="author">View posts by John Doelah</a>
+										<a href="#" rel="author">Visit website</a>
+										<a href="#" rel="author">Visit twitter</a>
+										<a href="#" rel="author">Visit facebook</a>
+									</div>
+									<!-- #author-link	-->
+								</div>
+								<!-- #author-description -->
+							</div>
+							<!-- #entry-author-info -->
+
+
+							<div id="ads-below-content" class="clearfix">
+								<span class="adspot spot1"><a href="#"><img src="images/ads-260.jpg"></a></span>
+								<span class="adspot spot2"><a href="#"><img src="images/ads-260.jpg"></a></span>
+								<span class="adsinfo"><a href="#">Sponsored Ads</a></span>
+							</div>
+							<!-- #ads-below-content -->
+
+
+							<div id="related-articles">
+								<ul>
+									<li class="categories"><a href="#tabcategories" title="Related">Related by categories</a></li>
+									<li class="tags"><a href="#tabtags" title="Related with tags">Related by tags</a></li>
+									<li class="popular"><a href="#tabpop" title="Most Popular">Popular articles</a></li>
+								</ul>
+								<div id="tabcategories" class="clearfix">
+									<article class="post-item-wrapper">
+										<a href="#1" class="post-image"><img src="images/thumb.jpg" /></a>
+										<div class="post-meta-data">
+											<span class="post-cat"><a href="#">Bussiness</a></span>
+											<span class="post-title"><a href="#">SOPA Protest Gallery: The 10 Major Websites That Went Dark Wednesday</a></span>
+											</div>
+										</article>
+									<article class="post-item-wrapper">
+										<a href="#1" class="post-image"><img src="images/thumb.jpg" /></a>
+										<div class="post-meta-data">
+											<span class="post-cat"><a href="#">Sports</a></span>
+											<span class="post-title"><a href="#">Big Oxmox advised there were thousands of bad Commas</a></span>
+											</div>
+										</article>
+									<article class="post-item-wrapper">
+										<a href="#1" class="post-image"><img src="images/thumb.jpg" /></a>
+										<div class="post-meta-data">
+											<span class="post-cat"><a href="#">Bussiness</a></span>
+											<span class="post-title"><a href="#">W3C Announces About Their Tiny Site Engine Can Validate</a></span>
+											</div>
+										</article>
+								</div><!-- /# end of tabcategories -->
+								<div id="tabtags" class="clearfix">
+									<article class="post-item-wrapper">
+										<a href="#1" class="post-image"><img src="images/thumb.jpg" /></a>
+										<div class="post-meta-data">
+											<span class="post-cat"><a href="#">Technology</a></span>
+											<span class="post-title"><a href="#">Someday You'll See Node.JS as Built-in Packages on Server</a></span>
+											</div>
+										</article>
+									<article class="post-item-wrapper">
+										<a href="#1" class="post-image"><img src="images/thumb.jpg" /></a>
+										<div class="post-meta-data">
+											<span class="post-cat"><a href="#">Bussiness</a></span>
+											<span class="post-title"><a href="#">WordPress Claims as The World Largest Blog Engine</a></span>
+											</div>
+										</article>
+								</div><!-- /# end of tabtags -->
+								<div id="tabpop" class="clearfix">
+									<article class="post-item-wrapper">
+										<a href="#1" class="post-image"><img src="images/thumb.jpg" /></a>
+										<div class="post-meta-data">
+											<span class="post-cat"><a href="#">Health</a></span>
+											<span class="post-title"><a href="#">SOPA Protest Gallery: The 10 Major Websites That Went Dark Wednesday</a></span>
+											</div>
+										</article>
+									<article class="post-item-wrapper">
+										<a href="#1" class="post-image"><img src="images/thumb.jpg" /></a>
+										<div class="post-meta-data">
+											<span class="post-cat"><a href="#">Investment</a></span>
+											<span class="post-title"><a href="#">Big Oxmox advised there were thousands of bad Commas</a></span>
+											</div>
+										</article>
+									<article class="post-item-wrapper">
+										<a href="#1" class="post-image"><img src="images/thumb.jpg" /></a>
+										<div class="post-meta-data">
+											<span class="post-cat"><a href="#">Internet</a></span>
+											<span class="post-title"><a href="#">W3C Announces About Their Tiny Site Engine Can Validate</a></span>
+											</div>
+										</article>
+								</div><!-- /# end of tabpopular -->
+							</div>
+							<!-- /#related-articles -->			
+
+						</footer>
+						<!-- .entry-meta -->
+						
+						
+						<div id="comments">
+							<div class="form_header" style="margin-top:60px;">
+								<h2 id="comments-title">Responses</h2>
+								<span class="link_color"><a href="#add">Add Yours</a></span>
+							</div>
+							<ul class="commentlist">
+								<li id="comment-452500" class="comment even thread-even depth-1 comment reader odd">
+								<div class="comment_wrap">
+									<img alt='' src='http://a0.twimg.com/profile_images/1840126036/DSC_0224kotakkecil_normal.jpg' class='photo avatar avatar-80 photo' height='80' width='80'/>
+									<div class="comment-meta-data">
+										<div class="meta_info">
+											<div class="comment-author">
+												<cite>martin</cite>
+											</div>
+											<abbr class="comment-time" title="February 3rd">
+											February 3rd </abbr>
+										</div>
+										<span class="comment-reply-link"><a class='comment-reply-link' href='/general/interviews/meet-the-developers-dustin-macdonald-of-acrylic-software/?replytocom=452500#respond' onclick='return addComment.moveForm("comment-452500", "452500", "respond", "33278")'>Reply</a></span>
+									</div>
+									<div class="comment-text">
+										<p>
+											I&#8217;m glad to see Acrylic get a bit of exposure. IMO Wallet is a much cleaner and more enjoyable experience than 1Password, which gathers a lot more exposure. I&#8217;ve long considered it one of the hidden gems on the mac.
+										</p>
+									</div>
+								</div>
+								<ul class='children'>
+									<li id="comment-452785" class="comment byuser comment-author-alexarena bypostauthor odd alt depth-2 comment user user-alexarena author author-alexarena even alt microid-mailto+http:sha1:c8cb260ccc3f0ec7c255e17d35893303fc0b4c8e">
+									<div class="comment_wrap">
+										<a href="http://alexarena.com" rel="external nofollow" title="Alex Arena"><img alt='' src='http://a0.twimg.com/profile_images/1745400938/IMG00497-20110216-1115_normal.jpg' class='photo avatar avatar-80 photo' height='80' width='80'/></a>
+										<div class="comment-meta-data">
+											<div class="meta_info">
+												<div class="comment-author">
+													<cite title="http://alexarena.com"><a href="http://alexarena.com" title="Alex Arena" class="external nofollow">Alex Arena</a></cite>
+												</div>
+												<abbr class="comment-time" title="February 4th">
+												February 4th </abbr>
+											</div>
+											<span class="comment-reply-link"><a class='comment-reply-link' href='/general/interviews/meet-the-developers-dustin-macdonald-of-acrylic-software/?replytocom=452785#respond' onclick='return addComment.moveForm("comment-452785", "452785", "respond", "33278")'>Reply</a></span>
+										</div>
+										<div class="comment-text">
+											<p>
+												I couldn&#8217;t agree more. All of Acrylic&#8217;s software is really great.
+											</p>
+										</div>
+									</div>
+									</li>
+								</ul>
+								</li>
+								<li id="comment-452523" class="comment even thread-odd thread-alt depth-1 comment reader odd microid-mailto+http:sha1:b9ef91377e3415a8181089352d3470b1cf5fde19">
+								<div class="comment_wrap">
+									<a href="http://www.affonso.org" rel="external nofollow" title="Alexandre Affonso"><img alt='' src='http://a0.twimg.com/profile_images/1734300746/332453841_normal.jpg' class='photo avatar avatar-80 photo' height='80' width='80'/></a>
+									<div class="comment-meta-data">
+										<div class="meta_info">
+											<div class="comment-author">
+												<cite title="http://www.affonso.org"><a href="http://www.affonso.org" title="Alexandre Affonso" class="external nofollow">Alexandre Affonso</a></cite>
+											</div>
+											<abbr class="comment-time" title="February 3rd">
+											February 3rd </abbr>
+										</div>
+										<span class="comment-reply-link"><a class='comment-reply-link' href='/general/interviews/meet-the-developers-dustin-macdonald-of-acrylic-software/?replytocom=452523#respond' onclick='return addComment.moveForm("comment-452523", "452523", "respond", "33278")'>Reply</a></span>
+									</div>
+									<div class="comment-text">
+										<p>
+											I&#8217;m a big Wallet fan. This is the most underestimate app for Mac. When I read all those 1Password good reviews I wonder if people have tried Wallet, a much more elegant, user friendly and lighter app. And it is great on iPad as well! Keep the good work, Dustin.
+										</p>
+									</div>
+								</div>
+								</li>
+								<li id="comment-452558" class="comment odd alt thread-even depth-1 comment reader even alt">
+								<div class="comment_wrap">
+									<img alt='' src='http://a0.twimg.com/profile_images/1852113028/335136896_normal.jpg' class='photo avatar avatar-80 photo' height='80' width='80'/>
+									<div class="comment-meta-data">
+										<div class="meta_info">
+											<div class="comment-author">
+												<cite>Marc</cite>
+											</div>
+											<abbr class="comment-time" title="February 3rd">
+											February 3rd </abbr>
+										</div>
+										<span class="comment-reply-link"><a class='comment-reply-link' href='/general/interviews/meet-the-developers-dustin-macdonald-of-acrylic-software/?replytocom=452558#respond' onclick='return addComment.moveForm("comment-452558", "452558", "respond", "33278")'>Reply</a></span>
+									</div>
+									<div class="comment-text">
+										<p>
+											Hi martin, Alexandre,
+										</p>
+										<p>
+											what woud you say in favor of wallet vs 1password except its elegance?<br/>
+											What are the key benefits of using Wallet?<br/>
+											I am curious and interested but have to admit that even if design is important this is not the heart of those kind of apps.
+										</p>
+									</div>
+								</div>
+								<ul class='children'>
+									<li id="comment-452600" class="comment even depth-2 comment reader odd">
+									<div class="comment_wrap">
+										<img alt='' src='http://a0.twimg.com/profile_images/1267813754/on_the_train_normal.jpg' class='photo avatar avatar-80 photo' height='80' width='80'/>
+										<div class="comment-meta-data">
+											<div class="meta_info">
+												<div class="comment-author">
+													<cite>martin</cite>
+												</div>
+												<abbr class="comment-time" title="February 3rd">
+												February 3rd </abbr>
+											</div>
+											<span class="comment-reply-link"><a class='comment-reply-link' href='/general/interviews/meet-the-developers-dustin-macdonald-of-acrylic-software/?replytocom=452600#respond' onclick='return addComment.moveForm("comment-452600", "452600", "respond", "33278")'>Reply</a></span>
+										</div>
+										<div class="comment-text">
+											<p>
+												@Marc
+											</p>
+											<p>
+												I own licenses to both applications and both meet my relatively simple functional needs (license, password and secure data storage, mobile portability, and auto-fill in Safari)
+											</p>
+											<p>
+												Wallet wins for me with it&#8217;s clean interface, lightness of touch and overall simplicity. It&#8217;s more than just simple aesthetics: the thoughtfulness and elegance of the design runs through all aspects of the software.
+											</p>
+											<p>
+												1Password feels to me like dodging traffic on the Vegas strip; Wallet like breathing fresh air. (Not easy to put that on a comparison spreadsheet!)
+											</p>
+											<p>
+												I wouldn&#8217;t recommend someone to buy one over the other &#8211; everyone has different needs and demo versions are available. I just find it frustrating that Wallet never seems to get the same exposure, despite being comparable on many levels. Many people will never try it, which is why I feel the need to speak up.
+											</p>
+										</div>
+									</div>
+									</li>
+								</ul>
+								</li>
+								<li id="comment-452753" class="comment odd alt thread-odd thread-alt depth-1 comment reader even alt">
+								<div class="comment_wrap">
+									<img alt='' src='http://a0.twimg.com/profile_images/1856762414/img02107-20111030-2053_normal.jpg' class='photo avatar avatar-80 photo' height='80' width='80'/>
+									<div class="comment-meta-data">
+										<div class="meta_info">
+											<div class="comment-author">
+												<cite>Jbob</cite>
+											</div>
+											<abbr class="comment-time" title="February 4th">
+											February 4th </abbr>
+										</div>
+										<span class="comment-reply-link"><a class='comment-reply-link' href='/general/interviews/meet-the-developers-dustin-macdonald-of-acrylic-software/?replytocom=452753#respond' onclick='return addComment.moveForm("comment-452753", "452753", "respond", "33278")'>Reply</a></span>
+									</div>
+									<div class="comment-text">
+										<p>
+											Support is absolutely awful. If you are going to offer a software product, you must provide adequate support. I would not buy this software because if there is a problem, you are on your own!
+										</p>
+									</div>
+								</div>
+								</li>
+							</ul>
+							<div class="navigation">
+								<div class="alignleft">
+								</div>
+								<div class="alignright">
+								</div>
+							</div>
+							<div id="respond">
+								<h2 id="reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/?p=1#respond" style="display:none;">Cancel reply</a></small></h2>
+								<form action="http://wp-themes.com/wp/wp-comments-post.php" method="post" id="commentform">
+									<p class="comment-notes">
+										Your email address will not be published. Required fields are marked <span class="required">*</span>
+									</p>
+									<p class="comment-form-author">
+										<label for="author">Name</label> <span class="helper-text">(ex: John Thor)</span> <span class="required">*</span><span class="input-wrapper"><input id="author" name="author" type="text" value="" size="30" aria-required='true'/></span>
+									</p>
+									<p class="comment-form-email">
+										<label for="email">Email</label> <span class="helper-text">(Not published)</span> <span class="required">*</span><span class="input-wrapper"><input id="email" name="email" type="text" value="" size="30" aria-required='true'/></span>
+									</p>
+									<p class="comment-form-url">
+										<label for="url">Website</label> <span class="helper-text">(Optional)</span> <span class="input-wrapper"><input id="url" name="url" type="text" value="" size="30"/></span>
+									</p>
+									<p class="comment-form-comment">
+										<label for="comment">Comment</label><span class="input-wrapper"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></span>
+									</p>
+									<p class="subscribe-to-comments">
+										<input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;"> <label for="subscribe">Notify me of followup comments via e-mail</label></p>
+									<p class="form-submit">
+										<span class="input-wrapper"><input name="submit" type="submit" id="submit" value="Post Comment"/></span>
+										<input type='hidden' name='comment_post_ID' value='1' id='comment_post_ID'/>
+										<input type='hidden' name='comment_parent' id='comment_parent' value='0'/>
+									</p>
+								</form>
+							</div>
+							<!-- #respond -->
+							<div id="trackbacks">
+								<h2>Trackbacks</h2>
+								<div class="commentlist">
+									<div id="trackback-text">
+										<p>
+											Acrylic Software is known for their beautiful and useful apps for the Mac and iOS. We got a chance to speak with Dustin ...
+										</p>
+										<p class="trackback-author">
+											<cite title="http://www.macdrifter.com/2012/02/acrylic-software-interview-link/"><a href="#" title="Acrylic Software Interview [Link] &laquo; Macdrifter" class="external nofollow">Acrylic Software Interview [Link] &laquo; Macdrifter</a></cite><span>February 3rd</span>
+										</p>
+									</div>
+									</li>
+								</div>
+							</div>
+						</div>
+						
+
+						
+					</div>
+					<!-- End of innercontainer -->
+					
+					<aside class="entry-meta">
+						<div class="entry-meta-inner">
+						<div class="entry-meta-title">
+						    <h5>Article info</h5>
+						</div>
+						<div class="entry-meta-items">
+						    <div class="entry-meta-item meta-author">
+						    	<h6>Author</h6>
+						    	<div class="entry-meta-wrapper">
+									<a class="author-image" url="#" title="View all posts by name" rel="author"><img src="https://twimg0-a.akamaihd.net/profile_images/1219761744/fgaeg-red-400_reasonably_small.jpg" alt="author name"></a>
+						    		<span class="author vcard">
+										<strong>John Doelah</strong><br />
+										<span class="post-total">12 posts in total</span>
+										<a class="url fn n" href="#" title="View all posts by name" rel="author">See post &rarr;</a>
+										</span>
+						    	</div>
+						    </div>
+						    <div class="entry-meta-item meta-category">
+						    	<h6>Categories</h6>
+						    	<div class="entry-meta-wrapper">
+								<a href="#">Development</a>, <a href="#">Resources</a>
+								</div>
+						    </div>
+						    <div class="entry-meta-item meta-tags">
+						    	<h6>Related Tags</h6>
+						    	<div class="entry-meta-wrapper">
+						    		<a href="#">place</a>, <a href="#">more</a>, <a href="#">tags</a>, <a href="#">here</a>
+						    	</div>
+						    </div>
+						    <div class="entry-meta-item meta-date">
+						    	<h6>Date Published</h6>
+						    	<div class="entry-meta-wrapper">
+									<a href="#" title="3:23 pm" rel="bookmark"><time class="entry-date" datetime="2011-05-04T15:23:31+00:00" pubdate="">May 4, 2011</time></a>
+								</div>
+						    </div>
+						    <div class="entry-meta-item meta-feedback">
+						    	<h6>Feedback</h6>
+						    	<div class="entry-meta-wrapper">
+						    		<a href="#">34 Comments</a><br /> <a href="#">21 Likes</a>
+						    	</div>
+						    </div>
+						</div>
+						</div>
+					</aside>
+					<!-- .entry-meta -->
+
+				</article>
+
+
+
+
+
+				
+
+			</div>
+			<!-- /# end of main content container, prepare for sidebar -->
+		
+		
+		</div>
+		<!-- End of primary inner container -->
+	</section>
+	<!-- End of primary section -->
+
+
+
+	<!-- footer page starting -->
+	<footer id="footer">
+
+		<!-- secondary footer navigation begin -->
+		<nav role="secondary footer navigation" class="sec-footer-nav">
+			<ul class="sec-foot-nav">
+				<li><a href="#">World</a></li>
+				<li><a href="#">Magazine</a></li>
+				<li><a href="#">Publishing</a></li>
+				<li><a href="#">Book</a></li>
+				<li><a href="#">Journal</a></li>
+				<li><a href="#">Headlines</a></li>
+				<li><a href="#">Popular</a></li>
+				<li><a href="#">Recommended</a></li>
+				<li><a href="#">Entertainment</a></li>
+				<li><a href="#">Business</a></li>
+				<li><a href="#">Health</a></li>
+				<li><a href="#">Subscribe</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</nav>
+		<!-- /.sec-footer-nav secondary footer nav end here -->
+
+
+		<!-- widget areas on footer begin -->
+		<div role="complementary" class="widget-area" id="footer-widget">
+		    <aside class="widget widget_pages">
+				<div class="widget-inner-container">
+			        <div class="widget-title">
+						<h5 class="wt">Trending today</h5>
+					</div>
+				    <ul>
+				        <li><a href="#">Does It Validate? Site-Wide Markup Validation</a></li>
+				        <li><a href="#">Circle Menu: A Circular Menu jQuery Plugin</a></li>
+				        <li><a href="#">Announcing Amber.js: SproutCore Framework</a></li>
+				        <li><a href="#">Tips for hosting providers and webmasters</a></li>
+				    </ul>
+					<a href="#" class="more-link">More Trending News</a>
+				</div>			
+		    </aside>
+		    <aside class="widget widget_categories">
+				<div class="widget-inner-container">
+			        <div class="widget-title">
+						<h5 class="wt">World Sport</h5>
+					</div>
+				    <ul>
+				        <li><a href="#">Circle Menu: A Circular Menu jQuery Plugin</a></li>
+				        <li><a href="#">Does It Validate? Site-Wide Markup Validation</a></li>
+				        <li><a href="#">Tips for hosting providers and webmasters</a></li>
+				        <li><a href="#">Announcing Amber.js: SproutCore Framework</a></li>
+				    </ul>
+					<a href="#" class="more-link">More Sport</a>		
+				</div>	
+		    </aside>
+		    <aside class="widget widget_archive">
+				<div class="widget-inner-container">
+			        <div class="widget-title">
+						<h5 class="wt">What's Happening now</h5>
+					</div>
+				    <ul>
+				        <li><a href="#">Tips for hosting providers and webmasters</a></li>
+				        <li><a href="#">Does It Validate? Site-Wide Markup Validation</a></li>
+				        <li><a href="#">Circle Menu: A Circular Menu jQuery Plugin</a></li>
+				        <li><a href="#">Announcing Amber.js: SproutCore Framework</a></li>
+				    </ul>
+					<a href="#" class="more-link">See more happening news</a>	
+				</div>		
+		    </aside>
+		    <aside class="widget widget_meta">
+				<div class="widget-inner-container">
+			        <div class="widget-title">
+						<h5 class="wt">Other Lifestyle</h5>
+					</div>
+				    <ul>
+				        <li><a href="#">Announcing Amber.js: SproutCore Framework</a></li>
+				        <li><a href="#">Does It Validate? Site-Wide Markup Validation</a></li>
+				        <li><a href="#">Tips for hosting providers and webmasters</a></li>
+				        <li><a href="#">Circle Menu: A Circular Menu jQuery Plugin</a></li>
+				    </ul>
+					<a href="#" class="more-link">More Lifestyle</a>			
+				</div>
+		    </aside>
+		</div>
+		<!-- /#footer-widget end of widget areas on footer -->
+
+
+		<!-- carousel for news on footer page -->
+		<div class="news-footer">
+		    <div class="news-footer-title">Recommended Reading</div>
+			<div class="carousel-container">
+    			<ul id="news-footer-carousel">
+			        <li class="news-footer-list">
+			            <a href="#" class="news-footer-item-image">
+			                <img src="images/avatar.jpg" alt="" />
+			            </a>
+		                <div class="news-footer-item">
+		                    <span class="news-footer-cat"><a href="#">Analysis</a></span>
+		                    <span class="news-footer-item-title"><a href="#">Introducing the World's Tiniest Frog: Smaller Than a Dime</a></span>
+		                    <span class="news-footer-item-author">by <a href="#">Bima Arafah</a></span>
+		                </div>
+			        </li>
+			        <li class="news-footer-list">
+			            <a href="#" class="news-footer-item-image">
+			                <img src="images/avatar.jpg" alt="" />
+			            </a>
+		                <div class="news-footer-item">
+		                    <span class="news-footer-cat"><a href="#">Opinion</a></span>
+		                    <span class="news-footer-item-title"><a href="#">9 Things You Might Not Know About Tim Tebow</a></span>
+		                    <span class="news-footer-item-author">by <a href="#">Onnay Okheng</a></span>
+		                </div>
+			        </li>
+			        <li class="news-footer-list">
+			            <a href="#" class="news-footer-item-image">
+			                <img src="images/avatar.jpg" alt="" />
+			            </a>
+		                <div class="news-footer-item">
+		                    <span class="news-footer-cat"><a href="#">category</a></span>
+		                    <span class="news-footer-item-title"><a href="#">Governments Crack Down on Offbeat Baby Names</a></span>
+		                    <span class="news-footer-item-author">by <a href="#">Angela Doe</a></span>
+		                </div>
+			        </li>
+			        <li class="news-footer-list">
+			            <a href="#" class="news-footer-item-image">
+			                <img src="images/avatar.jpg" alt="" />
+			            </a>
+		                <div class="news-footer-item">
+		                    <span class="news-footer-cat"><a href="#">category</a></span>
+		                    <span class="news-footer-item-title"><a href="#">John Parr Updates St. Elmo's Fire Theme Song for Tim Tebow</a></span>
+		                    <span class="news-footer-item-author">by <a href="#">Keshrim Phet</a></span>
+		                </div>
+			        </li>
+			        <li class="news-footer-list">
+			            <a href="#" class="news-footer-item-image">
+			                <img src="images/avatar.jpg" alt="" />
+			            </a>
+		                <div class="news-footer-item">
+		                    <span class="news-footer-cat"><a href="#">category</a></span>
+		                    <span class="news-footer-item-title"><a href="#">title link</a></span>
+		                    <span class="news-footer-item-author">by <a href="#">author link</a></span>
+		                </div>
+			        </li>
+			        <li class="news-footer-list">
+			            <a href="#" class="news-footer-item-image">
+			                <img src="images/avatar.jpg" alt="" />
+			            </a>
+		                <div class="news-footer-item">
+		                    <span class="news-footer-cat"><a href="#">category</a></span>
+		                    <span class="news-footer-item-title"><a href="#">title link</a></span>
+		                    <span class="news-footer-item-author">by <a href="#">author link</a></span>
+		                </div>
+			        </li>
+			        <li class="news-footer-list">
+			            <a href="#" class="news-footer-item-image">
+			                <img src="images/avatar.jpg" alt="" />
+			            </a>
+		                <div class="news-footer-item">
+		                    <span class="news-footer-cat"><a href="#">category</a></span>
+		                    <span class="news-footer-item-title"><a href="#">title link</a></span>
+		                    <span class="news-footer-item-author">by <a href="#">author link</a></span>
+		                </div>
+			        </li>
+			        <li class="news-footer-list">
+			            <a href="#" class="news-footer-item-image">
+			                <img src="images/avatar.jpg" alt="" />
+			            </a>
+		                <div class="news-footer-item">
+		                    <span class="news-footer-cat"><a href="#">category</a></span>
+		                    <span class="news-footer-item-title"><a href="#">title link</a></span>
+		                    <span class="news-footer-item-author">by <a href="#">author link</a></span>
+		                </div>
+			        </li>
+			        <li class="news-footer-list">
+			            <a href="#" class="news-footer-item-image">
+			                <img src="images/avatar.jpg" alt="" />
+			            </a>
+		                <div class="news-footer-item">
+		                    <span class="news-footer-cat"><a href="#">category</a></span>
+		                    <span class="news-footer-item-title"><a href="#">title link</a></span>
+		                    <span class="news-footer-item-author">by <a href="#">author link</a></span>
+		                </div>
+			        </li>
+			        <li class="news-footer-list">
+			            <a href="#" class="news-footer-item-image">
+			                <img src="images/avatar.jpg" alt="" />
+			            </a>
+		                <div class="news-footer-item">
+		                    <span class="news-footer-cat"><a href="#">category</a></span>
+		                    <span class="news-footer-item-title"><a href="#">title link</a></span>
+		                    <span class="news-footer-item-author">by <a href="#">author link</a></span>
+		                </div>
+			        </li>
+			        <li class="news-footer-list">
+			            <a href="#" class="news-footer-item-image">
+			                <img src="images/avatar.jpg" alt="" />
+			            </a>
+		                <div class="news-footer-item">
+		                    <span class="news-footer-cat"><a href="#">category</a></span>
+		                    <span class="news-footer-item-title"><a href="#">title link</a></span>
+		                    <span class="news-footer-item-author">by <a href="#">author link</a></span>
+		                </div>
+			        </li>
+			        <li class="news-footer-list">
+			            <a href="#" class="news-footer-item-image">
+			                <img src="images/avatar.jpg" alt="" />
+			            </a>
+		                <div class="news-footer-item">
+		                    <span class="news-footer-cat"><a href="#">category</a></span>
+		                    <span class="news-footer-item-title"><a href="#">title link</a></span>
+		                    <span class="news-footer-item-author">by <a href="#">author link</a></span>
+		                </div>
+			        </li>
+			    </ul>
+				<a class="prev" id="news-footer-prev" href="#"><span>prev</span></a>
+				<a class="next" id="news-footer-next" href="#"><span>next</span></a>
+				<div class="pagination" id="news-footer-pag"></div>
+			</div>
+		</div>
+		<!-- /. end of carousel on footer page -->
+
+
+
+		<!-- primary footer navigation begin -->
+		<nav role="navigation" class="primary-ft-navigation">
+			<ul class="primary-ft-nav">
+				<li class="icon-home"><a href="#">Home</a></li>
+				<li><a href="#">World</a></li>
+				<li><a href="#">Magazine</a></li>
+				<li><a href="#">Publishing</a></li>
+				<li><a href="#">Book</a></li>
+				<li><a href="#">Journal</a></li>
+				<li><a href="#">Headlines</a></li>
+				<li><a href="#">Popular</a></li>
+				<li><a href="#">Author</a></li>
+				<li><a href="#">Happening</a></li>
+				<li><a href="#">Technology</a></li>
+				<li><a href="#">Business</a></li>
+				<li><a href="#">Recommended</a></li>
+			</ul>
+		</nav>
+		<!-- /. primary footer navigation end here -->
+
+
+		<!-- subscribe structure on footer -->
+		<div class="ft-subscribe">
+			<div class="pattern pat-b">
+				<div class="inner-container">
+					<div class="subscribe">
+						<span>subscribe newsletter</span>
+
+						<!-- main container for search on the header -->
+						<div class="subscribe-box">
+					
+							<form action="#" id="subscribe-form" method="post">
+								<p class="options-input">
+								    <input type="text" class="input-text input-text-search" name="s" />
+									<input type="submit" class="input-button" value="Subscribe" name="submit-search" />
+								</p>
+							</form>
+					
+						</div>
+						<!-- /. end of form search -->
+			
+						
+					</div>
+					<div class="share-social-buttons">
+						<span>we are social too</span>	
+						<!-- AddThis Button BEGIN -->
+						<div class="addthis_toolbox addthis_default_style ">
+							<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+							<a class="addthis_button_tweet"></a>
+							<!-- we don't need this <a class="addthis_button_google_plusone" g:plusone:size="medium"></a> -->
+							<a class="addthis_counter addthis_pill_style"></a>
+						</div>
+						<!-- AddThis Button END -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /. end of subscribe markup-->
+
+
+		<div class="ft-logo">
+		    <div class="cols-logo">
+		    	<a href="#" title="Newspaper for news and entertainment">
+		    	    <img src="images/logo.png" alt="logo" class="logo" />
+		    	</a>
+		    </div>
+		    <div class="cols-nav-credit">
+		        <ul>
+		            <li><a href="">our authors</a></li>
+		            <li><a href="">publications</a></li>
+		            <li><a href="">journals</a></li>
+		            <li><a href="">blogs</a></li>
+		            <li><a href="">about</a></li>
+		            <li><a href="">contact</a></li>
+		        </ul>
+		        <p class="copyrights">The Newspaper WordPress Theme You’ve Been Waiting Long Enough!   <a href="#" class="back-top more-link">Back to top</a></p>
+		    </div>
+		</div>
+
+
+
+	</footer>
+	<!-- /# end of footer page -->
+
+</div>
+<!-- /. end of bg-container with white color -->
+
+</div>
+<!-- /.container end of main container class -->
+<!-- end of document page -->
+
+
+<div id="staticmenu">
+    <ul class="staticlist">
+        <li><a href="index.html">home i</a></li>
+        <li><a href="home.html">home ii</a></li>
+        <li><a href="homepage.html">home iii</a></li>
+        <li><a href="category.html">cat i</a></li>
+        <li><a href="category-standard.html">cat ii</a></li>
+        <li><a href="detail.html">detail</a></li>
+        <li><a href="blog.html">blog</a></li>
+        <li class="selected"><a href="blog-detail.html">blog detail</a></li>
+        <li><a href="contact.html">contact</a></li>
+        <li><a href="archive.html">archive</a></li>
+    </ul>
+</div>
+
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="js/libs/jquery-1.7.1.min.js"></script>
+<script src="js/libs/jquery-ui-1.8.16.min.js"></script>
+
+<!-- scripts concatenated and minified via build script -->
+<script src="js/plugins.js"></script>
+<script src="js/script.js"></script>
+<!-- end scripts -->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-9262526-27']);
+  _gaq.push(['_setDomainName', 'nesia.me']);
+  _gaq.push(['_trackPageview']);
+  _gaq.push(['_trackPageLoadTime']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body>
+</html>

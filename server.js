@@ -1,4 +1,5 @@
 var matador = require('matador'),
+    h5bp = require('h5bp'),
     env = process.env.NODE_ENV || 'development',
     argv = matador.argv,
     config = require('./app/config/' + env),
@@ -14,6 +15,12 @@ app.configure(function() {
     }));
     app.use(matador.bodyParser());
     app.use(matador.methodOverride());
+    app.use(h5bp.ieEdgeChromeFrameHeader());
+    app.use(h5bp.protectDotfiles());
+    app.use(h5bp.blockBackupFiles());
+    app.use(h5bp.removePoweredBy());
+    app.use(h5bp.crossDomainRules());
+    app.use(h5bp.suppressWww(true));
 });
 
 app.configure('development', function() {
