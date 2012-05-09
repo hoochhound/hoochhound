@@ -3,7 +3,8 @@ module.exports = function(app, config) {
         this.DBModel = this.mongoose.model('Review', new this.Schema({
             'product': {
                 type: String,
-                required: true
+                required: true,
+                index: true
             },
             'reviewerName': String,
             'reviewerWebsiteName': String,

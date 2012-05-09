@@ -6,13 +6,12 @@ module.exports = function(app) {
         ],
         admin: [
             ['get', '/', 'Admin'],
-            ['post', '/review/new', 'Admin', 'newReview'],
-            ['get', '/review/:type', 'Admin', 'review'],
-            ['get', '/list/products/:type/:pageNum?', 'Admin', 'listProduct'],
-            ['post', '/product/:id/add/review', 'Admin', 'doAddReview'],
-            ['get', '/product/:id/add/review', 'Admin', 'addReview'],
-            ['get', '/product/:id/list/review', 'Admin', 'listReview'],
-            ['get', '/import/:site', 'Admin', 'import']
+            ['get', '/product/list/:type/:pageNum?', 'Admin', 'listProduct'],
+            ['get', '/product/:id/remove', 'Admin', 'removeProduct'],
+            ['get', '/product/:id/review/list', 'Admin', 'listProductReview'],
+            ['post', '/product/:id/review/add', 'Admin', 'addReviewPost'],
+            ['get', '/product/:id/review/add', 'Admin', 'addReview'],
+            ['get', '/import/:site', 'Import', 'import']
         ]
     }
 }

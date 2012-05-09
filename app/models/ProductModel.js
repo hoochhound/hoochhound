@@ -11,7 +11,9 @@ module.exports = function(app, config) {
         this.DBModel = this.mongoose.model('Product', new this.Schema({
             'name': {
                 type: String,
-                index: true
+                index: {
+                    unique: true
+                }
             },
             'producerName': String,
             'primaryCategory': String,
@@ -28,6 +30,9 @@ module.exports = function(app, config) {
         create: function(newDoc, callback) {
             var doc = new this.DBModel(newDoc);
             doc.save(callback);
+        },
+        remove: function(conditions, callback) {
+            this.DBModel.remove(conditions, callback);
         },
         find: function(id, callback) {
             this.DBModel.findById(id, callback)
@@ -47,15 +52,14 @@ module.exports = function(app, config) {
         },
         paginate: function(q, pageNumber, resultsPerPage, callback) {
             var MyModel = this.DBModel;
-            var skipFrom = (pageNumber * resultsPerPage) - resultsPerPage;
-            var query = MyModel.find(q).skip(skipFrom).limit(resultsPerPage);
+            var query = MyModel.find(q).sort(['name'], 1).skip((pageNumber * resultsPerPage) - resultsPerPage).limit(resultsPerPage);
             query.exec(function(error, results) {
                 if (error) {
-                    callback(error, null, null);
+                    callback(error);
                 } else {
                     MyModel.count(q, function(error, count) {
                         if (error) {
-                            callback(error, null, null);
+                            callback(error);
                         } else {
                             callback(null, Math.floor(count / resultsPerPage), results);
                         }
