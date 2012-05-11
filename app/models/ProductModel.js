@@ -61,7 +61,7 @@ module.exports = function(app, config) {
                         if (error) {
                             callback(error);
                         } else {
-                            callback(null, Math.floor(count / resultsPerPage), results);
+                            callback(null, Math.ceil(count / resultsPerPage), results);
                         }
                     });
                 }

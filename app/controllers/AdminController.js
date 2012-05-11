@@ -11,7 +11,7 @@ module.exports = function(app, config) {
                 var controller = this;
                 app.getModel('Product').paginate({
                     primaryCategory: req.params.type
-                }, currentPage, 20, function(err, pageCount, paginatedResults) {
+                }, currentPage, 500, function(err, pageCount, paginatedResults) {
                     if (err) console.error(new Error(err));
                     var pagination = [];
                     pagination.settings = {
