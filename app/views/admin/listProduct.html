@@ -8,22 +8,22 @@
       </div>
       <div id="dialogAddReview" title="Add Review">
         <div class="uiForm">
-          <form action="" method="post" class="dialog">
+          <form name="addReviewForm" id="addReviewForm" method="post" class="dialog">
             <fieldset>
               <label>Reviewer:</label>
               <input name="reviewerName" type="text" placeholder="Name">
               <input name="reviewerWebsiteName" type="text" placeholder="Website Name">
               <input name="reviewerWebsiteURL" type="text" placeholder="Website URL">
               <label>Review score:</label>
-              <input name="score" type="text" value="">
+              <input name="score" type="text">
               <label>Review date:</label>
               <input name="date" type="text" class="maskDate" placeholder="MM/DD/YYYY">
               <label>Blurb:</label>
-              <textarea name="blurb" rows="8" cols=""></textarea>
+              <textarea name="blurb" rows="8"></textarea>
               <label>Link to review:</label>
-              <input name="link" type="text" value="">
+              <input name="link" type="text">
               <label for="tags">Tags:</label>
-              <input type="text" id="tags" name="tags" class="tags" value="">
+              <input type="text" id="tags" name="tags" class="tags">
             </fieldset>
           </form>
         </div>
@@ -67,8 +67,8 @@
         <td>{{producerName}}</td>
         <td>{{origin}}</td>
         <td class="fileInfo"><span><strong>Primary:</strong> {{primaryCategory}}</span><span><strong>Secondary:</strong> {{secondaryCategory}}</span></td>
-        <td><a href="/admin/product/{{_id}}/review/add" title="" class="button basic" style="margin: 5px;"><span>Add</span></a><a href="/admin/product/{{_id}}/review/list" title="" class="button basic" style="margin: 5px;"><span>List</span></a></td>
-        <td class="actBtns"><a href="#" title="Edit" class="tipS"><img src="http://static.hoochhound.com/admin/images/icons/edit.png" alt=""></a><a href="#" title="Remove" class="tipS opener" data-product="{{_id}}"><img src="http://static.hoochhound.com/admin/images/icons/remove.png" alt=""></a></td>
+        <td><a href="#" title="" class="button basic dialogOpenerAddReview" style="margin: 5px;" data-product="{{_id}}"><span>Add</span></a><a href="/admin/product/{{_id}}/review/list" title="" class="button basic" style="margin: 5px;"><span>List</span></a></td>
+        <td class="actBtns"><a href="#" title="Edit" class="tipS"><img src="http://static.hoochhound.com/admin/images/icons/edit.png" alt=""></a><a href="#" title="Remove" class="tipS dialogOpenerRemove" data-product="{{_id}}"><img src="http://static.hoochhound.com/admin/images/icons/remove.png" alt=""></a></td>
       </tr>
       {{/paginatedResults}}
         </tbody>

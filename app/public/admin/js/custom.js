@@ -867,9 +867,9 @@ $(function() {
         autoOpen: false,
         modal: true,
         buttons: {
-            "Delete Product": function() {
+            Submit: function() {
                 $(this).dialog("close");
-                window.location.href = "/admin/product/" + product + "/remove";
+                $('#addReviewForm').submit();
             },
             Cancel: function() {
                 $(this).dialog("close");
@@ -877,8 +877,13 @@ $(function() {
         }
     });
 
-    $(".opener").click(function() {
+    $(".dialogOpenerRemove").click(function() {
         product = $(this).data("product");
+        $("#dialogRemove").dialog("open");
+    });
+    
+    $(".dialogOpenerAddReview").click(function() {
+        $('#addReviewForm').attr('action', "/admin/product/" + $(this).data("product") + "/review/add");
         $("#dialogAddReview").dialog("open");
     });
 
