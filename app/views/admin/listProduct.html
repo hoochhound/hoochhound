@@ -53,7 +53,6 @@
         <tr>
           <td>Name</td>
           <td>Producer</td>
-          <td>Origin</td>
           <td>Category</td>
           <td>Reviews</td>
           <td></td>
@@ -65,9 +64,8 @@
       <tr>
         <td>{{name}}</td>
         <td>{{producerName}}</td>
-        <td>{{origin}}</td>
         <td class="fileInfo"><span><strong>Primary:</strong> {{primaryCategory}}</span><span><strong>Secondary:</strong> {{secondaryCategory}}</span></td>
-        <td><a href="#" title="" class="button basic dialogOpenerAddReview" style="margin: 5px;" data-product="{{_id}}"><span>Add</span></a><a href="/admin/product/{{_id}}/review/list" title="" class="button basic" style="margin: 5px;"><span>List</span></a></td>
+        <td><a href="#" title="" class="button greyishB dialogOpenerAddReview" style="margin: 5px;" data-product="{{_id}}"><img src="http://static.hoochhound.com/admin/images/icons/light/create.png" alt="" class="icon"><span>Add</span></a><a href="/admin/product/{{_id}}/review/list" title="List All" class="button tipS {{status}}" style="margin: 5px;"><span>{{reviewCount}}</span></a></td>
         <td class="actBtns"><a href="#" title="Edit" class="tipS"><img src="http://static.hoochhound.com/admin/images/icons/edit.png" alt=""></a><a href="#" title="Remove" class="tipS dialogOpenerRemove" data-product="{{_id}}"><img src="http://static.hoochhound.com/admin/images/icons/remove.png" alt=""></a></td>
       </tr>
       {{/paginatedResults}}

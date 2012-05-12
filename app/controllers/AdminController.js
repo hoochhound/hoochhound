@@ -7,12 +7,12 @@ module.exports = function(app, config) {
             if (req.params.pageNum === undefined) {
                 res.redirect(req.url + '/1');
             } else {
-                var currentPage = parseInt(req.params.pageNum, 10) || 1;
+                var currentPage = parseInt(req.params.pageNum, 10);
                 var controller = this;
                 app.getModel('Product').paginate({
                     primaryCategory: req.params.type
-                }, currentPage, 500, function(err, pageCount, paginatedResults) {
-                    if (err) console.error(new Error(err));
+                }, currentPage, 500, function(err, pageCount, docs) {
+                    if (err) return new Error(err);
                     var pagination = [];
                     pagination.settings = {
                         nextPage: currentPage + 1,
@@ -31,14 +31,28 @@ module.exports = function(app, config) {
                             });
                         }
                     }
-                    controller.render(res, 'admin/listProduct', {
-                        pagination: pagination,
-                        paginatedResults: paginatedResults,
-                        message: req.session.messages
+                    var docCount = docs.length;
+                    docs.forEach(function(doc) {
+                        app.getModel('Review').countByProductId(doc._id, function(err, count) {
+                            docCount--;
+                            if (count > 1) {
+                                doc.status = 'greenB';
+                            } else {
+                                doc.status = 'redB';
+                            }
+                            doc.reviewCount = count;
+                            if (docCount === 0) {
+                                controller.render(res, 'admin/listProduct', {
+                                    pagination: pagination,
+                                    paginatedResults: docs,
+                                    message: req.session.messages
+                                });
+                                if (req.session.messages) {
+                                    delete req.session.messages;
+                                }
+                            }
+                        });
                     });
-                    if (req.session.messages) {
-                        delete req.session.messages;
-                    }
                 });
             }
         },

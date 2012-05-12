@@ -45,9 +45,9 @@ module.exports = function(app, config) {
                 product: id
             }, callback);
         },
-        countByProductId: function(conditions, callback) {
+        countByProductId: function(id, callback) {
             this.DBModel.count({
-                product: conditions
+                product: id
             }, callback);
         }
     });

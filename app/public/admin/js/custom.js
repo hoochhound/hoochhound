@@ -866,6 +866,7 @@ $(function() {
     $("#dialogAddReview").dialog({
         autoOpen: false,
         modal: true,
+        width: 460,
         buttons: {
             Submit: function() {
                 $(this).dialog("close");
