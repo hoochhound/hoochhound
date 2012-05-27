@@ -1,171 +1,44 @@
-<!DOCTYPE html>
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie7" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9 ie8" lang="en"> <![endif]-->
-<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-	<meta charset="utf-8">
-	<title>Starter template</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="author" content="">
-
-	<!-- Le styles -->
-	<!-- bootstrap.css as dependencies stylesheet -->
-	<link href="css/bootstrap.css" rel="stylesheet" media="all">
-	<!-- print stylesheet from printstylesheet.com, it's standard -->
-	<link href="css/print.css" rel="stylesheet" media="print">
-	<!-- jQuery UI Stylesheet -->
-	<link rel="stylesheet" media="all" href="css/jquery-ui.css">
-	<!-- custom style from user, not from us as developer -->
-	<link href="style.css" rel="stylesheet" media="all">
-
-	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-	<!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
-	<!-- Le fav and touch icons -->
-	<link rel="shortcut icon" href="images/favicon.ico">
-	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72-precomposed.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114-precomposed.png">
-
-	<!-- define all variable for javascript in here -->
-	<script type="text/javascript">
-		// for login panel
-		var mouse_is_inside = false;		
-		var custom_bg_image = "images/bg.jpg";
-		var tweet = "html5";
-		var flickrid = "998875@N22";
-	</script>
-
-	<!-- for addthis -->
-	<script type="text/javascript">
-		var addthis_config = {"data_track_clickback":true};
-	</script>
-	<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=fgaeg"></script>
-	<!-- end of scripting for add this widget to load -->
-
-	<!-- for twitter widget hovercard -->
-	<script type="text/javascript" src="http://platform.twitter.com/anywhere.js?id=ZSO1guB57M6u0lm4cwqA&v=1"></script>
-
-
-	<!-- just for the demo only! -->
-	<style type="text/css">
-		#staticmenu {
-		  /* For modern browsers */
-		  /* For IE 6/7 (trigger hasLayout) */
-		  zoom: 1;
-		  padding-left: 1.5em;
-		  padding-right: 1.5em;
-		  font-family: sans-serif;
-		  font-size: 10px !important;
-		  font-weight: bold;
-		  z-index: 99;
-		  background-color: #222;
-		  position: fixed;
-		  bottom: 0;
-		  left: 0;
-		  right: 0;
-		}
-		#staticmenu:before {
-		  content: "";
-		  display: table;
-		}
-		#staticmenu:after {
-		  clear: both;
-		  content: "";
-		  display: table;
-		}
-		#staticmenu .staticlist {
-		  display: inline;
-		  float: left;
-		}
-		#staticmenu .staticbuy {
-		  display: inline;
-		  float: right;
-		}
-		#staticmenu ul {
-		  margin: 0;
-		  padding: 0;
-		  border: 0;
-		  /* For modern browsers */
-		  /* For IE 6/7 (trigger hasLayout) */
-		  zoom: 1;
-		}
-		#staticmenu ul:before {
-		  content: "";
-		  display: table;
-		}
-		#staticmenu ul:after {
-		  clear: both;
-		  content: "";
-		  display: table;
-		}
-		#staticmenu ul li {
-		  list-style-image: none;
-		  list-style-type: none;
-		  margin-left: 0px;
-		  white-space: nowrap;
-		  display: inline;
-		  float: left;
-		  padding-left: 4px;
-		  padding-right: 4px;
-		}
-		#staticmenu ul li:first-child, 
-		#staticmenu ul li.first {
-		  padding-left: 0;
-		}
-		#staticmenu ul li:last-child {
-		  padding-right: 0;
-		}
-		#staticmenu ul li.last {
-		  padding-right: 0;
-		}
-		#staticmenu ul li {
-		  border-right: 1px solid #000;
-		  border-left: 1px solid #333;
-		  padding: 0;
-		}
-		#staticmenu ul li:first-child {
-		  border-left: none;
-		}
-		#staticmenu ul li:last-child {
-		  border-right: none;
-		}
-		#staticmenu ul li a {
-		  position: relative;
-		  padding: 0.225em 0.75em;
-		  display: block;
-		  text-transform: uppercase;
-		  color: white;
-		  text-decoration: none;
-		}
-		#staticmenu ul li a:hover {
-		  text-decoration: none;
-		}
-		#staticmenu ul li a:before {
-		  display: none;
-		  position: absolute;
-		  content: "";
-		  height: 1px;
-		  top: 0;
-		  left: -1px;
-		  right: -1px;
-		  border-bottom: 2px solid red;
-		}
-		#staticmenu ul li.selected a:before,
-		#staticmenu ul li a:hover:before { display: block; }
-	</style>
-	<!-- end of style for the demo -->
-
-
+    <meta charset="utf-8">
+    <title>Starter template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/vendor/modernizr-2.5.3.min.js"></script>
+    <!-- define all variable for javascript in here -->
+    <script type="text/javascript">
+        // for login panel
+        var mouse_is_inside = false;
+        var custom_bg_image = "images/bg.jpg";
+        var tweet = "html5";
+        var flickrid = "998875@N22";
+    </script>
+    <!-- for addthis -->
+    <script type="text/javascript">
+        var addthis_config = {
+            "data_track_clickback": true
+        };
+    </script>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=fgaeg"></script>
+    <!-- end of scripting for add this widget to load -->
+    <!-- for twitter widget hovercard -->
+    <script type="text/javascript" src="http://platform.twitter.com/anywhere.js?id=ZSO1guB57M6u0lm4cwqA&v=1"></script>
 </head>
-
 <body>
-
-
+    <!--[if lt IE 7]>
+        <p class=chromeframe>Your browser is
+            <em>ancient!</em>
+            <a href="http://browsehappy.com/">Upgrade to a different browser</a>or
+            <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a>to experience this site.</p>
+    <![endif]-->
 <!-- running facebook sdk -->
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
