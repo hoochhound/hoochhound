@@ -3,7 +3,8 @@ module.exports = function(app, config) {
         this.DBModel = this.mongoose.model('Review', new this.Schema({
             'product': {
                 type: String,
-                required: true
+                required: true,
+                index: true
             },
             'reviewerName': String,
             'reviewerWebsiteName': String,
@@ -44,9 +45,9 @@ module.exports = function(app, config) {
                 product: id
             }, callback);
         },
-        countByProductId: function(conditions, callback) {
+        countByProductId: function(id, callback) {
             this.DBModel.count({
-                product: conditions
+                product: id
             }, callback);
         }
     });

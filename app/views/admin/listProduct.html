@@ -1,6 +1,47 @@
-{{> header}}
+{{> header}} 
 <!-- Main content wrapper -->
-<div class="wrapper"> 
+<div class="wrapper">
+  <div class="body textC">
+    <div class="uDialog">
+      <div id="dialogRemove" title="Remove product?">
+        <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>This product will be permanently deleted and cannot be recovered. Are you sure?</p>
+      </div>
+      <div id="dialogAddReview" title="Add Review">
+        <div class="uiForm">
+          <form name="addReviewForm" id="addReviewForm" method="post" class="dialog">
+            <fieldset>
+              <label>Reviewer:</label>
+              <input name="reviewerName" type="text" placeholder="Name">
+              <input name="reviewerWebsiteName" type="text" placeholder="Website Name">
+              <input name="reviewerWebsiteURL" type="text" placeholder="Website URL">
+              <label>Review score:</label>
+              <input name="score" type="text">
+              <label>Review date:</label>
+              <input name="date" type="text" class="maskDate" placeholder="MM/DD/YYYY">
+              <label>Blurb:</label>
+              <textarea name="blurb" rows="8"></textarea>
+              <label>Link to review:</label>
+              <input name="link" type="text">
+              <label for="tags">Tags:</label>
+              <input type="text" id="tags" name="tags" class="tags">
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  {{#message.success}}
+  <div class="nNote nSuccess hideit">
+    <p><strong>SUCCESS:</strong>{{message.success}}</p>
+  </div>
+  {{/message.success}}
+  
+  {{#message.error}}
+  <div class="nNote nFailure hideit">
+    <p><strong>FAILURE:</strong>{{message.error}}</p>
+  </div>
+  {{/message.error}} 
   
   <!-- Static table -->
   <div class="widget">
@@ -12,39 +53,39 @@
         <tr>
           <td>Name</td>
           <td>Producer</td>
-          <td>Origin</td>
           <td>Category</td>
           <td>Reviews</td>
           <td></td>
         </tr>
       </thead>
       <tbody>
+      
       {{#paginatedResults}}
-        <tr>
-          <td>{{name}}</td>
-          <td>{{producerName}}</td>
-          <td>{{origin}}</td>
+      <tr>
+        <td>{{name}}</td>
+        <td>{{producerName}}</td>
         <td class="fileInfo"><span><strong>Primary:</strong> {{primaryCategory}}</span><span><strong>Secondary:</strong> {{secondaryCategory}}</span></td>
-          <td><a href="/admin/product/{{_id}}/add/review" title="" class="button basic" style="margin: 5px;"><span>Add</span></a><a href="/admin/product/{{_id}}/list/review" title="" class="button basic" style="margin: 5px;"><span>List</span></a></td>
-          <td class="actBtns"><a href="#" title="Edit" class="tipS"><img src="http://static.hoochhound.com/admin/images/icons/edit.png" alt=""></a><a href="#" title="Remove" class="tipS"><img src="http://static.hoochhound.com/admin/images/icons/remove.png" alt=""></a></td>
-        </tr>
-        {{/paginatedResults}}
-      </tbody>
+        <td><a href="#" title="" class="button greyishB dialogOpenerAddReview" style="margin: 5px;" data-product="{{_id}}"><img src="http://static.hoochhound.com/admin/images/icons/light/create.png" alt="" class="icon"><span>Add</span></a><a href="/admin/product/{{_id}}/review/list" title="List All" class="button tipS {{status}}" style="margin: 5px;"><span>{{reviewCount}}</span></a></td>
+        <td class="actBtns"><a href="#" title="Edit" class="tipS"><img src="http://static.hoochhound.com/admin/images/icons/edit.png" alt=""></a><a href="#" title="Remove" class="tipS dialogOpenerRemove" data-product="{{_id}}"><img src="http://static.hoochhound.com/admin/images/icons/remove.png" alt=""></a></td>
+      </tr>
+      {{/paginatedResults}}
+        </tbody>
+      
     </table>
   </div>
   {{#pagination.settings}}
   <div class="pagination">
     <ul class="pages">
-	    <li class="prev"><a href="{{pagination.settings.prevPage}}">&lt;</a></li>
-        {{#pagination.pages}}
-		<li><a href="{{pageNum}}"{{#active}} class="active"{{/active}}>{{pageNum}}</a></li>
-        {{/pagination.pages}}
-		<li class="next"><a href="{{pagination.settings.nextPage}}">&gt;</a></li>
-	</ul>
-   </div>
-   {{/pagination.settings}}
-      <div class="clear"></div>
-    </div>
+      <li class="prev"><a href="{{pagination.settings.prevPage}}">&lt;</a></li>
+      {{#pagination.pages}}
+      <li><a href="{{pageNum}}"{{#active}} class="active"{{/active}}>{{pageNum}}</a></li>
+      {{/pagination.pages}}
+      <li class="next"><a href="{{pagination.settings.nextPage}}">&gt;</a></li>
+    </ul>
   </div>
+  {{/pagination.settings}}
+  <div class="clear"></div>
+</div>
+</div>
 </div>
 {{> footer}}
