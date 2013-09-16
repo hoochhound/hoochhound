@@ -1,0 +1,12 @@
+<?php
+
+//var_dump(class_exists('Mongo'));
+//connect to mongo db
+$m = new Mongo("mongodb://hoochhound:hoochhound@linus.mongohq.com:10079/hoochhound-development_copy");
+
+// Configuration
+$dbhost = 'localhost';
+$dbname = 'hoochhound-development_copy';
+
+$db = $m->$dbname;
+?>
